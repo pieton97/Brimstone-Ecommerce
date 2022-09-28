@@ -6,7 +6,7 @@ include('functions.php')
 <html>
 <head>
 	<title>Registration system PHP and MySQL</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 <div class="header">

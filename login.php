@@ -6,10 +6,11 @@ include('functions.php');
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Registration system PHP and MySQL</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Brimstone Collective</title>
+	<link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 <body>
+  <?php include("templates/header.php") ?>
 	<div class="header">
 		<h2>Login</h2>
 	</div>
@@ -33,6 +34,7 @@ include('functions.php');
 		</p>
 	</form>
 
+  <?php include("templates/footer.php") ?>
   <hr>
 </body>
 </html>

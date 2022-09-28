@@ -4,20 +4,34 @@ if (isAdmin() === false) {
 	$_SESSION['msg'] = "You must log in first";
 	header('location: ../login.php');
 }
+
+if(isset($_GET['update'])){
+  $update_id = $_GET['update'];
+  $query = "SELECT * FROM products WHERE id = ?";
+  $stmt = $pdo->prepare($query);
+  $stmt->execute([$update_id]);
+  $watch = $stmt->fetch(PDO::FETCH_ASSOC);
+  echo "<pre>".print_r($watch,true)."</pre>";
+  $title        =  $watch['title'];
+	$img_name     =  $watch['img_name'];
+	$description  =  $watch['description'];
+	$price        =  $watch['price'];
+}
 ?>
 
+<!-- edits the product -->
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Registration system PHP and MySQL</title>
-	<link rel="stylesheet" type="text/css" href="../style.css">
+	<link rel="stylesheet" type="text/css" href="../styles/style.css">
 </head>
 <body>
 	<div class="header">
-		<h2>Add product</h2>
+		<h2>Edit product</h2>
 	</div>
 
-	<form method="post" action="add_product_form.php">
+	<form method="post" action="edit_product_form.php">
     <?php echo display_error(); ?>
     <div class="input-group">
       <label for="title">Title</label>
@@ -36,8 +50,9 @@ if (isAdmin() === false) {
       <input type="text" name="price" value="<?php echo $price; ?>">
     </div>
     <div class="input-group">
-      <button type="submit" class="btn" name="add_product_btn">Add product</button>
+      <button type="submit" class="btn" name="edit_product_btn">Edit product</button>
     </div>
+    <input type="hidden" name="update_id" value="<?php echo $update_id; ?>">
     <p>
       <a href="home.php">Cancel</a>
     </p>

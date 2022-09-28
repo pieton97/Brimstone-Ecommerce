@@ -12,8 +12,8 @@ $description = "";
 $price = "";
 $errors = array(); 
 
-// add product
-if (isset($_POST['add_product_btn'])) 
+// add/edit product
+if (isset($_POST['add_product_btn']) || isset($_POST['edit_product_btn'])) 
 {
 	addProduct();
 }
@@ -42,39 +42,38 @@ function addProduct()
 		array_push($errors, "Price is required"); 
 	}
 
-  // register user if there are no errors in the form
-	if (count($errors) == 0) {
+	if (count($errors) == 0 && isset($_POST['add_product_btn'])) 
+  {
     $query = "INSERT INTO products (title, img_name, description, price) 
     VALUES(?, ?, ?, ?)";
     $stmt = $pdo->prepare($query);
     $stmt->execute([$title,$img_name,$description,$price]);
-
+    
     $_SESSION['success']  = "New product successfully added!!";
     header('location: ../admin/home.php');
 	}
-}
-
-// edit product
-if (isset($_POST['edit_product_btn'])) 
-{
-	editProduct();
-}
-
-function editProduct() {
-
+  else if (count($errors) == 0 && isset($_POST['edit_product_btn'])) 
+  {
+    $update_id = $_POST['update_id'];
+    
+    $query = "UPDATE products SET title=?,img_name=?,description=?,price=? WHERE id = ?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$title,$img_name,$description,$price,$update_id]);
+    
+    $_SESSION['success']  = "Product edit successful!!";
+    header('location: ../admin/home.php');
+  }
 }
 
 // delete product
-if (isset($_POST['delete'])) 
+if (isset($_GET['delete'])) 
 {
 	deleteProduct();
 }
-
 function deleteProduct() {
   global $pdo;
-  $id_to_delete = $_POST['id_to_delete'];
+  $id_to_delete = $_GET['delete'];
   try {
-    // sql to delete a record
     $sql = "DELETE FROM products WHERE id=?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$id_to_delete]);
@@ -83,8 +82,6 @@ function deleteProduct() {
     echo $sql . "<br>" . $e->getMessage();
   }
 }
-
-
 
 function display_error() {
 	global $errors;

@@ -1,0 +1,30 @@
+.header {
+  background: #003366;
+}
+button[name=register_btn] {
+  background: #003366;
+}
+.product-img {
+  width: 100px;
+}
+.products-container {
+  display: block;
+  width: 50%;
+  margin: 30px auto;
+  font-size: 1rem;
+}
+.edit-products {
+  text-align: center;
+  font-size: 18px;
+  margin: 10px auto;
+}
+.product {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.yellow {
+  background-color: yellow;
+  color: black;
+}

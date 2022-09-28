@@ -1,6 +1,7 @@
 <?php 
 include('../functions.php');
-include('../config/add_cart.php');
+include('../config/edit_cart.php');
+// include('../config/edit_product.php');
 
 if (isAdmin() === false) {
 	$_SESSION['msg'] = "You must log in first";
@@ -27,50 +28,21 @@ $cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="../style.css">
-	<style>
-    .header {
-      background: #003366;
-    }
-    button[name=register_btn] {
-      background: #003366;
-    }
-    .product-img {
-      width: 100px;
-    }
-    .products-container {
-      display: block;
-      width: 50%;
-      margin: 30px auto;
-      font-size: 1rem;
-    }
-    .edit-products {
-      text-align: center;
-      font-size: 18px;
-      margin: 10px auto;
-    }
-    .product {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 50px;
-    }
-    .yellow {
-      background-color: yellow;
-      color: black;
-    }
-	</style>
+	<title>Brimstone Collective</title>
+	<link rel="stylesheet" type="text/css" href="../styles/style.css">
+	<link rel="stylesheet" type="text/css" href="../styles/style2.css">
 </head>
-
 <body>
+  <?php include("../templates/header.php") ?>
+
 	<div class="header">
 		<h2>Welcome Administrator, Home</h2>
 	</div>
 	<div class="content">
 		<!-- notification message -->
+    <div onclick="this.remove()"><?php echo display_error(); ?></div>
 		<?php if (isset($_SESSION['success'])) : ?>
-			<div class="error success" >
+			<div class="error success" onclick="this.remove()">
 				<h3>
 					<?php 
 						echo $_SESSION['success']; 
@@ -111,16 +83,15 @@ $cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <img class="product-img" src="../product_images/<?php echo $watch['img_name']?>.png" alt="">
         <p>$<?php echo $watch['price'] ?></p>
 
-        <form method="post" action="edit_product_form.php">
-          <input type="hidden" name="id_to_update" value="<?php echo $watch['id']; ?>">
-          <input type="submit" name="update" value="update" class="btn yellow">
-			  </form>
-        <form method="post" action="add_product_form.php">
-          <input type="hidden" name="id_to_delete" value="<?php echo $watch['id']; ?>">
-          <input type="submit" name="delete" value="Delete" class="btn brand z-depth-0">
-			  </form>
+        <!-- update product info -->
+        <a href="edit_product_form.php?update=<?php echo $watch['id']; ?>">Update</a>
+        
+        <!-- delete product -->
+        <a href="add_product_form.php?delete=<?php echo $watch['id']; ?>">Delete</a>
+
+        <!-- adds to cart -->
         <form method="post" action="home.php">
-          <input type="number" name="quantity">
+          <input type="number" min="1" max="10" name="quantity" value="1">
           <input type="hidden" name="user_id" value="<?php echo $_SESSION['user']['id']; ?>">
           <input type="hidden" name="product_id" value="<?php echo $watch['id']; ?>">
           <input type="submit" name="add_cart" value="add to cart" class="btn brand z-depth-0">
@@ -129,6 +100,7 @@ $cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php } ?>
   </div>
 
+  <?php include("../templates/footer.php") ?>
   <hr>
 </body>
 </html>
