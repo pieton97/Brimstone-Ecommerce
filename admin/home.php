@@ -54,7 +54,7 @@ $cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		<!-- logged in user information -->
 		<div class="profile_info">
-			<img src="../images/admin_profile.png"  >
+			<img src="../images/admin_profile.jpg"  >
 
 			<div>
 				<?php  if (isset($_SESSION['user'])) : ?>
