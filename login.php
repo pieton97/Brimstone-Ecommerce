@@ -11,6 +11,7 @@ include('functions.php');
 </head>
 <body>
   <?php include("templates/header.php") ?>
+  
 	<div class="header">
 		<h2>Login</h2>
 	</div>
