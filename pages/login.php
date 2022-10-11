@@ -1,16 +1,10 @@
 <?php 
-include('functions.php');
+include('../config/essentials.php');
+include('config/functions.php');
 
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Brimstone Collective</title>
-	<link rel="stylesheet" type="text/css" href="styles/style.css">
-</head>
-<body>
-  <?php include("templates/header.php") ?>
+<?php include("templates/header.php") ?>
   
 	<div class="header">
 		<h2>Login</h2>
@@ -18,7 +12,7 @@ include('functions.php');
 	<form method="post" action="login.php">
 
 		<?php echo display_error(); ?>
-
+	
 		<div class="input-group">
 			<label>Username</label>
 			<input type="text" name="username" >
@@ -35,10 +29,7 @@ include('functions.php');
 		</p>
 	</form>
 
-  <?php include("templates/footer.php") ?>
-  <hr>
-</body>
-</html>
+<?php include("templates/footer.php") ?>
 
 <?php 
 $query = "SELECT * FROM users";

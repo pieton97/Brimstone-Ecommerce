@@ -2,7 +2,7 @@
 session_start();
 
 // connect to the database
-require_once('config/db_connect.php');
+require_once('db_connect.php');
 $pdo = pdo_connect_mysql();
 
 // variable declaration
@@ -94,22 +94,12 @@ function display_error() {
 	}
 }	
 
-// tells you if a user is logged in or not
-function isLoggedIn()
-{
-	if (isset($_SESSION['user'])) {
-		return true;
-	}else{
-		return false;
-	}
-}
-
 // log user out if logout button clicked
 if (isset($_GET['logout'])) 
 {
 	session_destroy();
 	unset($_SESSION['user']);
-	header("location: login.php");
+	header("location: ../pages/login.php");
 }
 
 // call the login() function if register_btn is clicked
@@ -153,7 +143,7 @@ function login()
 
 				$_SESSION['user'] = $logged_in_user;
 				$_SESSION['success']  = "You are now logged in";
-				header('location: admin/home.php');		  
+				header('location: ../admin/home.php');		  
 			}
       else {
 				$_SESSION['user'] = $logged_in_user;
@@ -168,11 +158,3 @@ function login()
 	}
 }
 
-function isAdmin()
-{
-	if (isset($_SESSION['user']) && $_SESSION['user']['user_type'] == 'admin' ) {
-		return true;
-	}else{
-		return false;
-	}
-}

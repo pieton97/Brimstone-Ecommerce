@@ -28,3 +28,9 @@ button[name=register_btn] {
   background-color: yellow;
   color: black;
 }
+
+/* test */
+body {
+	padding: 200px;
+	background-color: red;
+}

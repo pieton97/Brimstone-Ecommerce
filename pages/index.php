@@ -1,9 +1,30 @@
 <?php 
 	include('functions.php');
-  if (!isLoggedIn()) {
-    $_SESSION['msg'] = "You must log in first";
-    header('location: login.php');
-  }
+
+	// tells you if a user is logged in or not
+	function isLoggedIn()
+	{
+		if (isset($_SESSION['user'])) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	function isAdmin()
+	{
+		if (isset($_SESSION['user']) && $_SESSION['user']['user_type'] == 'admin' ) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	
+	if (!isLoggedIn()) {
+		$_SESSION['msg'] = "You must log in first";
+		header('location: login.php');
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -13,21 +34,15 @@
 	<link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 <body>
+	<?php include("templates/header.php") ?>
+
 	<div class="header">
 		<h2>Home Page</h2>
 	</div>
 	<div class="content">
 		<!-- notification message -->
-		<?php if (isset($_SESSION['success'])) : ?>
-			<div class="error success" >
-				<h3>
-					<?php 
-						echo $_SESSION['success']; 
-						unset($_SESSION['success']);
-					?>
-				</h3>
-			</div>
-		<?php endif ?>
+		<?php include("templates/success.php"); ?>
+		
 		<!-- logged in user information -->
 		<div class="profile_info">
 			<img src="images/user_profile.png"  >

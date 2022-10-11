@@ -1,17 +1,18 @@
 <?php 
-include('../functions.php');
-include('../config/edit_cart.php');
+include('../config/essentials.php');
+include('config/functions.php');
+include('config/edit_cart.php');
 // include('../config/edit_product.php');
 
 if (isAdmin() === false) {
 	$_SESSION['msg'] = "You must log in first";
-	header('location: ../login.php');
+	header('location: login.php');
 }
 
 if (isset($_GET['logout'])) {
 	session_destroy();
 	unset($_SESSION['user']);
-	header("location: ../login.php");
+	header("location: login.php");
 }
 
 $query = "SELECT * FROM products";
@@ -25,15 +26,8 @@ $stmt->execute();
 $cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Brimstone Collective</title>
-	<link rel="stylesheet" type="text/css" href="../styles/style.css">
-	<link rel="stylesheet" type="text/css" href="../styles/style2.css">
-</head>
-<body>
-  <?php include("../templates/header.php") ?>
+
+<?php include("templates/header.php"); ?>
 
 	<div class="header">
 		<h2>Welcome Administrator, Home</h2>
@@ -100,10 +94,7 @@ $cart = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php } ?>
   </div>
 
-  <?php include("../templates/footer.php") ?>
-  <hr>
-</body>
-</html>
+<?php include("templates/footer.php") ?>
 
 <?php 
 echo "<pre>".print_r($cart,true)."</pre>";

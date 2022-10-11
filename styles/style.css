@@ -1,4 +1,4 @@
-* { margin: 0px; padding: 0px; }
+* { margin: 0px; padding: 0px; box-sizing: border-box; }
 body {
 	font-size: 120%;
 	background: #F8F8FF;
@@ -86,3 +86,4 @@ form, .content {
 	display: block;
 	clear: both;
 }
+
