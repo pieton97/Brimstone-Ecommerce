@@ -1,39 +1,37 @@
-<?php 
-echo isAdmin();
-?>
-
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Brimstone Collective</title>
-	<link rel="stylesheet" type="text/css" href="../styles/style.css">
-	<link rel="stylesheet" type="text/css" href="../styles/style2.css">
 
-	<?php if(isAdmin()) : ?>
+	<link rel="stylesheet" type="text/css" href="../styles/style.css?v=<?php echo time(); ?>">
+
+	<?php if (isAdmin()) : ?>
+		<link rel="stylesheet" type="text/css" href="../styles/style2.css?v=<?php echo time(); ?>">
 	<?php endif ?>
-
-	<style>
-		body {
-			padding: 30px;
-		}
-	</style>
 
 	<script src="../test.js" defer></script>
 </head>
+
 <body>
 
-<nav>
-  <div>
-    <a href="index.php" class="">Brimstone Collective</a>
-    <ul id="" class="">
-      <li><a href="cart.php" class="">Cart</a></li>
-		<li><a href=""></a>My Account</li>
-		<li><a href="login.php">Login</a></li>
-		<li><a href="../pages/homepage.php">homepage</a></li>
+	<nav>
+		<a href="../pages/homepage.php" class="">Brimstone Collective</a>
+		<div>
+			<p>other stuff</p>
+		</div>
+		<ul id="" class="">
+			<li><a href="../pages/cart.php" class="">Cart</a></li>
 
-		<?php if(isAdmin()) : ?>
-			<li><a href="../admin/home.php">Admin home</a></li>
-		<?php endif ?>
-    </ul>
-  </div>
-</nav>
+			<?php if (isLoggedIn()) : ?>
+				<li><a href="../pages/my_account.php">My Account</a></li>
+			<?php else : ?>
+				<li><a href="../pages/login.php">Login</a></li>
+			<?php endif; ?>
+
+			<?php if (isAdmin()) : ?>
+				<li><a href="../admin/admin_home.php">Admin home</a></li>
+			<?php endif ?>
+		</ul>
+
+	</nav>

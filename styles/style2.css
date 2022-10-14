@@ -29,8 +29,22 @@ button[name=register_btn] {
   color: black;
 }
 
-/* test */
-body {
-	padding: 200px;
-	background-color: red;
+/* temporary style */
+.header {
+	background: #003366;
+}
+button[name=register_btn] {
+	background: #003366;
+}
+.user-list {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 6px;
+	margin: 30px;
+}
+.user {
+	display: grid;
+	grid-template-columns: repeat(6, 200px);
 }

@@ -1,19 +1,18 @@
-<?php 
-include('functions.php') 
+<?php
+include('../config/essentials.php');
+include('config/functions.php');
+
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Registration system PHP and MySQL</title>
-  <link rel="stylesheet" href="styles/style.css">
-</head>
-<body>
+<?php include("templates/header.php"); ?>
+
 <div class="header">
 	<h2>Register</h2>
 </div>
 <form method="post" action="register.php">
-  <?php echo display_error(); ?>
+	<!-- notification message -->
+	<?php include('templates/notifications.php'); ?>
+
 	<div class="input-group">
 		<label>Username</label>
 		<input type="text" name="username" value="<?php echo $username; ?>">
@@ -38,15 +37,9 @@ include('functions.php')
 	</p>
 </form>
 
-<hr>
-</body>
-</html>
+<?php include("templates/footer.php") ?>
 
-<?php 
-$query = "SELECT * FROM users";
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-echo "<pre>".print_r($results,true)."</pre>";
+<?php
+$users = grabAllUsers();
+echo "<pre>" . print_r($users, true) . "</pre>";
 ?>
