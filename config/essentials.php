@@ -64,7 +64,7 @@ function grabUserCart()
 	$userID = $_SESSION['user']['id'];
 	// $sql = "SELECT * FROM cart WHERE user_id=?";
 
-	$sql = "SELECT c.user_id, c.quantity, p.title, p.img_name, p.price 
+	$sql = "SELECT c.id AS cart_id, c.user_id, c.quantity, p.title, p.img_name, p.price 
 	FROM cart AS c LEFT JOIN products AS p ON p.id = c.product_id 
 	WHERE user_id=?";
 

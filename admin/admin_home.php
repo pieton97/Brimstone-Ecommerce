@@ -24,23 +24,7 @@ $users = grabAllUsers();
 	<?php include('templates/notifications.php'); ?>
 
 	<!-- logged in user information -->
-	<div class="profile_info">
-		<img src="../images/admin_profile.jpg">
-
-		<div>
-			<?php if (isset($_SESSION['user'])) : ?>
-				<strong><?php echo $_SESSION['user']['username']; ?></strong>
-
-				<small>
-					<i style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
-					<br>
-					<a href="../admin/admin_home.php?logout='1'" style="color: red;">logout</a>
-					&nbsp; <a href="create_user.php"> add user</a>
-				</small>
-
-			<?php endif ?>
-		</div>
-	</div>
+	<?php include('templates/profile_info.php'); ?>
 </div>
 
 <!-- Editing products -->
@@ -63,6 +47,7 @@ $users = grabAllUsers();
 
 			<!-- adds to cart -->
 			<form method="post" action="admin_home.php">
+				<input type="hidden" name="location" value="admin_home.php">
 				<input type="number" min="1" max="10" name="quantity" value="1">
 				<input type="hidden" name="user_id" value="<?php echo $_SESSION['user']['id']; ?>">
 				<input type="hidden" name="product_id" value="<?php echo $watch['id']; ?>">

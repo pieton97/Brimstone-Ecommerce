@@ -9,17 +9,15 @@ include('config/edit_cart.php');
 // 	header('location: login.php');
 // };
 
-if (isLoggedIn()) 
-{
-	$cart = grabUserCart();
-}
-else 
-{
-	$cart = $_SESSION['guest_cart'];
+if (isLoggedIn()) {
+	$_SESSION['shopping_cart'] = grabUserCart();
+} else {
+	// $cart = $_SESSION['guest_cart'];
+	$_SESSION['shopping_cart'] = array();
 }
 
 // $_SESSION['shopping_cart'] = $cart;
-echo "<pre>" . print_r($cart, true) . "</pre>";
+// echo "<pre>" . print_r($_SESSION['shopping_cart'], true) . "</pre>";
 
 ?>
 
@@ -34,23 +32,9 @@ echo "<pre>" . print_r($cart, true) . "</pre>";
 	<?php include('templates/notifications.php'); ?>
 
 	<!-- logged in user information -->
-	<div class="profile_info">
-		<img src="../images/user_profile.webp">
-
-		<div>
-			<?php if (isset($_SESSION['user'])) : ?>
-				<strong><?php echo $_SESSION['user']['username']; ?></strong>
-
-				<small>
-					<i style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
-					<br>
-					<a href="cart.php?logout='1'" style="color: red;">logout</a>
-				</small>
-
-			<?php endif ?>
-		</div>
-	</div>
+	<?php include('templates/profile_info.php'); ?>
 </div>
+
 <div>
 	<p>User Cart:</p>
 </div>
@@ -74,18 +58,14 @@ if (isset($_SESSION["shopping_cart"])) :
 			<?php foreach ($_SESSION["shopping_cart"] as $product) { ?>
 				<tr>
 					<td>
-						<img src='<?php echo $product["image"]; ?>' width="50" height="40" />
+						<img class="product-img" src="../product_images/<?php echo $product["img_name"]; ?>.png" />
 					</td>
-					<td><?php echo $product["name"]; ?><br />
-						<form method='post' action=''>
-							<input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
-							<input type='hidden' name='action' value="remove" />
-							<button type='submit' class='remove'>Remove Item</button>
-						</form>
+					<td><?php echo $product["title"]; ?><br />
+						<a href="cart.php?delete_from_cart=<?php echo $product["cart_id"]; ?>">Delete</a>
 					</td>
 					<td>
 						<form method='post' action=''>
-							<input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
+							<input type='hidden' name='code' value="<?php echo $product["product_id"]; ?>" />
 							<input type='hidden' name='action' value="change" />
 							<select name='quantity' class='quantity' onChange="this.form.submit()">
 								<option <?php if ($product["quantity"] == 1) echo "selected"; ?> value="1">1</option>
@@ -104,6 +84,9 @@ if (isset($_SESSION["shopping_cart"])) :
 			}
 			?>
 			<tr>
+				<td>
+					<a href="cart.php?delete_all_cart=1" onclick="return confirm('Remove all?');">Remove all</a>
+				</td>
 				<td>
 					<strong>TOTAL: <?php echo "$" . $total_price; ?></strong>
 				</td>

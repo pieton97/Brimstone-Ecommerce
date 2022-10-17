@@ -14,6 +14,7 @@ if (isset($_POST['add_cart']))
   $user_id = $_POST['user_id'];
   $product_id = $_POST['product_id'];
   $quantity = $_POST['quantity'];
+  $location = $_POST['location'];
 
   $query = "SELECT * FROM `cart` WHERE user_id=? AND product_id=?";
   $stmt = $pdo->prepare($query);
@@ -32,6 +33,7 @@ if (isset($_POST['add_cart']))
     $stmt->execute([$user_id,$product_id,$quantity]);
   
     $_SESSION['success']  = "New product successfully added!!";
+    header("location: $location");
   }
 };
 
@@ -48,23 +50,32 @@ if (isset($_POST['update_cart']))
 };
 
 
-if (isset($_GET['remove']))
+if (isset($_GET['delete_from_cart']))
 {
-  $remove_id = $_GET['remove'];
-  $query = "DELETE FROM cart WHERE id = ?";
-  $stmt = $pdo->prepare($query);
-  $stmt->execute([$remove_id]);
+	global $pdo;
+  try {
+    $remove_id = $_GET['delete_from_cart'];
+    $query = "DELETE FROM cart WHERE id = ?";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([$remove_id]);
+  } 
+  catch (PDOException $e) {
+		echo $sql . "<br>" . $e->getMessage();
+	};
+
+	$_SESSION['success']  = "Product removed";
   
-//   header('location: index.php');
+  header('location: ../pages/cart.php');
 };
   
-if (isset($_GET['delete_all']))
+if (isset($_GET['delete_all_cart']))
 {
+  global $user_id;
   $query = "DELETE FROM cart WHERE user_id = ?";
   $stmt = $pdo->prepare($query);
   $stmt->execute([$user_id]);
   
-//   header('location: index.php');
-};
+	$_SESSION['success']  = "All products removed";
 
-?>
+  header('location: ../pages/cart.php');
+};
