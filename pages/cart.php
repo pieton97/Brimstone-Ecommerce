@@ -1,6 +1,5 @@
 <?php
 include('../config/essentials.php');
-include('config/functions.php');
 include('config/edit_cart.php');
 
 // if (!isLoggedIn()) 
@@ -13,7 +12,7 @@ if (isLoggedIn()) {
 	$_SESSION['shopping_cart'] = grabUserCart();
 } else {
 	// $cart = $_SESSION['guest_cart'];
-	$_SESSION['shopping_cart'] = array();
+	// $_SESSION['shopping_cart'] = array();
 }
 
 // $_SESSION['shopping_cart'] = $cart;
@@ -33,14 +32,7 @@ if (isLoggedIn()) {
 
 	<!-- logged in user information -->
 	<?php include('templates/profile_info.php'); ?>
-</div>
-
-<div>
-	<p>User Cart:</p>
-</div>
-
-
-<!-- TODO: Clean up the page -->
+</div>							
 
 <?php
 if (isset($_SESSION["shopping_cart"])) :
@@ -64,10 +56,10 @@ if (isset($_SESSION["shopping_cart"])) :
 						<a href="cart.php?delete_from_cart=<?php echo $product["cart_id"]; ?>">Delete</a>
 					</td>
 					<td>
-						<form method='post' action=''>
-							<input type='hidden' name='code' value="<?php echo $product["product_id"]; ?>" />
-							<input type='hidden' name='action' value="change" />
-							<select name='quantity' class='quantity' onChange="this.form.submit()">
+						<form method='post' action='cart.php'>
+							<input type='hidden' name='cart_id' value="<?php echo $product["cart_id"]; ?>" />
+							<input type='hidden' name='update_cart' value="change" />
+							<select name='quantity' onChange="this.form.submit()">
 								<option <?php if ($product["quantity"] == 1) echo "selected"; ?> value="1">1</option>
 								<option <?php if ($product["quantity"] == 2) echo "selected"; ?> value="2">2</option>
 								<option <?php if ($product["quantity"] == 3) echo "selected"; ?> value="3">3</option>
@@ -77,18 +69,21 @@ if (isset($_SESSION["shopping_cart"])) :
 						</form>
 					</td>
 					<td><?php echo "$" . $product["price"]; ?></td>
-					<td><?php echo "$" . $product["price"] * $product["quantity"]; ?></td>
+					<td><?php echo "$" . $product["price"] * $product["quantity"] . ".00"; ?></td>
 				</tr>
 			<?php
 				$total_price += ($product["price"] * $product["quantity"]);
 			}
 			?>
 			<tr>
+				<td></td>
 				<td>
 					<a href="cart.php?delete_all_cart=1" onclick="return confirm('Remove all?');">Remove all</a>
 				</td>
+				<td></td>
+				<td>TOTAL:</td>
 				<td>
-					<strong>TOTAL: <?php echo "$" . $total_price; ?></strong>
+					<strong><?php echo "$" . $total_price . ".00"; ?></strong>
 				</td>
 			</tr>
 		</tbody>

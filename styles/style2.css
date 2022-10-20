@@ -1,50 +1,25 @@
 .header {
   background: #003366;
 }
-button[name=register_btn] {
+button[name="register_btn"] {
   background: #003366;
 }
-.product-img {
-  width: 100px;
-}
-.products-container {
-  display: block;
-  width: 50%;
-  margin: 30px auto;
-  font-size: 1rem;
-}
-.edit-products {
-  text-align: center;
-  font-size: 18px;
-  margin: 10px auto;
-}
-.product {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-}
-.yellow {
-  background-color: yellow;
-  color: black;
-}
-
 /* temporary style */
 .header {
-	background: #003366;
+  background: #003366;
 }
-button[name=register_btn] {
-	background: #003366;
+button[name="register_btn"] {
+  background: #003366;
 }
 .user-list {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 6px;
-	margin: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin: 30px;
 }
 .user {
-	display: grid;
-	grid-template-columns: repeat(6, 200px);
+  display: grid;
+  grid-template-columns: repeat(6, 200px);
 }

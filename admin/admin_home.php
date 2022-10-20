@@ -25,6 +25,7 @@ $users = grabAllUsers();
 
 	<!-- logged in user information -->
 	<?php include('templates/profile_info.php'); ?>
+	<a href="create_user.php"> add user</a>
 </div>
 
 <!-- Editing products -->
@@ -43,7 +44,7 @@ $users = grabAllUsers();
 			<a href="edit_product_form.php?update=<?php echo $watch['id']; ?>">Update</a>
 
 			<!-- delete product -->
-			<a href="add_product_form.php?delete=<?php echo $watch['id']; ?>">Delete</a>
+			<a href="add_product_form.php?delete=<?php echo $watch['id']; ?>" onclick="return confirm('Pernamently remove this product?');">Delete</a>
 
 			<!-- adds to cart -->
 			<form method="post" action="admin_home.php">

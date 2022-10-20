@@ -58,6 +58,18 @@ function grabAllWatches()
 	return $watches;
 }
 
+function grabProduct($product_id) 
+{
+	global $pdo;
+	$query = "SELECT * FROM products WHERE id = ?";
+
+	$stmt = $pdo->prepare($query);
+	$stmt->execute([$product_id]);
+	$product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	return $product;
+}
+
 function grabUserCart()
 {
 	global $pdo;
@@ -72,7 +84,6 @@ function grabUserCart()
 	// LEFT JOIN (SELECT product_id FROM cart WHERE user_id=?) 
 	// ON product_id = products.id";
 
-	
 	// $sql = "SELECT user_id, title, img_name, price FROM products 
 	// LEFT JOIN cart AS c
 	// ON c.product_id = products.id";
@@ -94,6 +105,3 @@ function grabAllUsers()
 	$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return $users;
 }
-
-?>
-

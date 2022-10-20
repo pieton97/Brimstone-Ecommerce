@@ -11,6 +11,8 @@ $watches = grabAllWatches();
 <!-- notification message -->
 <?php include('templates/notifications.php'); ?>
 
+<img style="display: block; margin: 20px auto;" src="../images/dddd.jpg" width="60%" alt="">
+
 <h1 style="text-align: center;">hello there this is the homepage</h1>
 
 <!-- Displaying products -->
@@ -20,6 +22,7 @@ $watches = grabAllWatches();
 			<p><?php echo $watch['title']; ?></p>
 			<img class="product-img" src="../product_images/<?php echo $watch['img_name'] ?>.png" alt="">
 			<p>$<?php echo $watch['price'] ?></p>
+			<a href="view_product.php?product=<?php echo $watch['id'] ?>">View product</a>
 
 			<!-- adds to cart -->
 			<form method="post" action="homepage.php">
