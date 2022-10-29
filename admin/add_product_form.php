@@ -26,6 +26,22 @@ if (isAdmin() === false) {
 		<input type="text" name="img_name" value="<?php echo $img_name; ?>">
 	</div>
 	<div class="input-group">
+		<label>Category</label>
+		<select name="category">
+			<option value=""></option>
+			<option value="watch">watch</option>
+			<option value="bracelet">bracelet</option>
+		</select>
+	</div>
+	<div class="input-group">
+		<label>Gender</label>
+		<select name="gender">
+			<option value=""></option>
+			<option value="male">male</option>
+			<option value="female">female</option>
+		</select>
+	</div>
+	<div class="input-group">
 		<label>Description</label>
 		<input type="text" name="description" value="<?php echo $description; ?>">
 	</div>

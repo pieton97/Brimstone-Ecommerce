@@ -17,6 +17,8 @@ if (isset($_GET['update'])) {
 	echo "<pre>" . print_r($watch, true) . "</pre>";
 	$title        =  $watch['title'];
 	$img_name     =  $watch['img_name'];
+	$category     =  $watch['category'];
+	$gender    		=  $watch['gender'];
 	$description  =  $watch['description'];
 	$price        =  $watch['price'];
 }
@@ -38,6 +40,22 @@ if (isset($_GET['update'])) {
 	<div class="input-group">
 		<label>Img Name</label>
 		<input type="text" name="img_name" value="<?php echo $img_name; ?>">
+	</div>
+	<div class="input-group">
+		<label>Category</label>
+		<select name="category">
+			<option value="<?php echo $category; ?>"><?php echo $category; ?> (current)</option>
+			<option value="watch">watch</option>
+			<option value="bracelet">bracelet</option>
+		</select>
+	</div>
+	<div class="input-group">
+		<label>Gender</label>
+		<select name="gender">
+			<option value="<?php echo $gender; ?>"><?php echo $gender; ?> (current)</option>
+			<option value="male">male</option>
+			<option value="female">female</option>
+		</select>
 	</div>
 	<div class="input-group">
 		<label>Description</label>

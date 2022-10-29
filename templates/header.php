@@ -10,7 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="../styles/style2.css?v=<?php echo time(); ?>">
 	<?php endif ?>
 
-	<script src="../test.js" defer></script>
+	<script src="../scripts/test.js" defer></script>
 </head>
 
 <body>

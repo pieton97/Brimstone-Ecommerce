@@ -50,7 +50,7 @@ if (isset($_SESSION["shopping_cart"])) :
 			<?php foreach ($_SESSION["shopping_cart"] as $product) { ?>
 				<tr>
 					<td>
-						<img class="product-img" src="../product_images/<?php echo $product["img_name"]; ?>.png" />
+						<img class="product-img" src="../product_images/<?php echo $product["img_name"]; ?>" />
 					</td>
 					<td><?php echo $product["title"]; ?><br />
 						<a href="cart.php?delete_from_cart=<?php echo $product["cart_id"]; ?>">Delete</a>

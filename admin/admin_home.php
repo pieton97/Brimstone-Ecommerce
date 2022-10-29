@@ -20,10 +20,7 @@ $users = grabAllUsers();
 	<h2>Admin Home</h2>
 </div>
 <div class="content">
-	<!-- notification message -->
 	<?php include('templates/notifications.php'); ?>
-
-	<!-- logged in user information -->
 	<?php include('templates/profile_info.php'); ?>
 	<a href="create_user.php"> add user</a>
 </div>
@@ -37,7 +34,7 @@ $users = grabAllUsers();
 	<?php foreach ($watches as $watch) { ?>
 		<div class="product">
 			<p><?php echo $watch['title']; ?></p>
-			<img class="product-img" src="../product_images/<?php echo $watch['img_name'] ?>.png" alt="">
+			<img class="product-img" src="../product_images/<?php echo $watch['img_name'] ?>" alt="">
 			<p>$<?php echo $watch['price'] ?></p>
 
 			<!-- update product info -->

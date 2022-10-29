@@ -4,17 +4,29 @@
 // connect to the database
 require_once('db_connect.php');
 $pdo = pdo_connect_mysql();
-$user_id = $_SESSION['user']['id'];
+if (isset($_SESSION['user'])) {
+	$user_id = $_SESSION['user']['id'];
+}
+// $user_id = $_SESSION['user']['id'];
+
+// $user_id = 1;
 // echo $user_id;
 // echo "<pre>".print_r($user_id,true)."</pre>";
 
+// $query = "UPDATE products SET category = ? WHERE id = ?";
+// $stmt = $pdo->prepare($query);
+// $stmt->execute(["watch", 2]);
 
 if (isset($_POST['add_cart'])) {
 	// sleep(2);
 	$user_id = $_POST['user_id'];
 	$product_id = $_POST['product_id'];
 	$quantity = $_POST['quantity'];
-	$location = $_POST['location'];
+	// $location = $_POST['location'];
+
+	// echo $_POST['location'];
+	// echo $_POST['quantity'];
+	// echo $_POST['add_cart'];
 
 	$query = "SELECT * FROM `cart` WHERE user_id=? AND product_id=?";
 	$stmt = $pdo->prepare($query);
@@ -33,6 +45,8 @@ if (isset($_POST['add_cart'])) {
 		$_SESSION['success']  = "New product successfully added!!";
 		// header("location: $location");
 	}
+	
+	echo json_encode('output test123');
 };
 
 if (isset($_POST['update_cart'])) {
@@ -45,7 +59,6 @@ if (isset($_POST['update_cart'])) {
 
 	$_SESSION['success']  = "Cart updated";
 };
-
 
 if (isset($_GET['delete_from_cart'])) {
 	global $pdo;
