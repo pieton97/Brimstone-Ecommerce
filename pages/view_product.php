@@ -6,7 +6,6 @@ if (isset($_GET['product'])) {
 	$product_id = $_GET['product'];
 	$product = grabProduct($product_id);
 }
-
 ?>
 
 <?php include("templates/header.php") ?>
@@ -18,7 +17,7 @@ if (isset($_GET['product'])) {
 <div class="products-container">
 	<div>
 		<p><?php echo $product['title']; ?></p>
-		<img class="product-img" src="../product_images/<?php echo $product['img_name'] ?>.png" alt="">
+		<img class="product-img" src="../product_images/<?php echo $product['img_name'] ?>" alt="">
 		<p>$<?php echo $product['price'] ?></p>
 		<p><?php echo $product['description'] ?></p>
 

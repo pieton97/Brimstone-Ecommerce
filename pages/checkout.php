@@ -2,44 +2,21 @@
 include('../config/essentials.php');
 include('config/edit_cart.php');
 
-// if (!isLoggedIn()) 
-// {
-// 	$_SESSION['msg'] = "You must log in first";
-// 	header('location: login.php');
-// };
-
-if (isLoggedIn()) {
-	$_SESSION['shopping_cart'] = grabUserCart();
-	$total_price = 0;
-	foreach ($_SESSION["shopping_cart"] as $product) {
-		$total_price += $product["price"] * $product["quantity"];
-	};
-} else {
-	// $cart = $_SESSION['guest_cart'];
-	// $_SESSION['shopping_cart'] = array();
-}
-
-// $_SESSION['shopping_cart'] = $cart;
-// echo "<pre>" . print_r($_SESSION['shopping_cart'], true) . "</pre>";
-
+if (!isLoggedIn() && isset($_SESSION["shopping_cart"])) {
+	$_SESSION['msg'] = "You must log in first";
+	header('location: login.php');
+};
+$total_price = 0;
 ?>
 
 
 <?php include("templates/header.php") ?>
-
-<div class="header">
-	<h2>My Cart</h2>
-</div>
-<div class="content">
-	<!-- notification message -->
-	<?php include('templates/notifications.php'); ?>
-
-	<!-- logged in user information -->
-	<?php include('templates/profile_info.php'); ?>
-</div>							
-
+<h2>Checkout</h2>
+<!-- notification message -->
+<!-- <?php include('templates/notifications.php'); ?> -->
 <?php
 if (isset($_SESSION["shopping_cart"])) :
+	$total_price = 0;
 ?>
 	<table class="table">
 		<tbody>
@@ -74,7 +51,10 @@ if (isset($_SESSION["shopping_cart"])) :
 					<td><?php echo "$" . $product["price"] * $product["quantity"] . ".00"; ?></td>
 					<td><a href="cart.php?delete_from_cart=<?php echo $product["cart_id"]; ?>">Delete</a></td>
 				</tr>
-			<?php } ?>
+			<?php
+				$total_price += ($product["price"] * $product["quantity"]);
+			}
+			?>
 			<tr>
 				<td></td>
 				<td></td>
@@ -83,7 +63,7 @@ if (isset($_SESSION["shopping_cart"])) :
 				<td>
 					<strong><?php echo "$" . $total_price . ".00"; ?></strong>
 				</td>
-				<td><a href="checkout.php?">Checkout</a></td>
+				<td><a href="checkout.php?">Place Order</a></td>
 			</tr>
 		</tbody>
 	</table>
@@ -91,5 +71,6 @@ if (isset($_SESSION["shopping_cart"])) :
 else : echo "<h3>Your cart is empty!</h3>";
 endif;
 ?>
+
 
 <?php include("templates/footer.php") ?>

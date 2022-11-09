@@ -8,7 +8,7 @@ if (isAdmin() === false) {
 	header('location: ../pages/login.php');
 }
 
-$watches = grabAllWatches();
+$watches = grabAllProducts();
 $cart = grabUserCart();
 $users = grabAllUsers();
 ?>
@@ -36,6 +36,7 @@ $users = grabAllUsers();
 			<p><?php echo $watch['title']; ?></p>
 			<img class="product-img" src="../product_images/<?php echo $watch['img_name'] ?>" alt="">
 			<p>$<?php echo $watch['price'] ?></p>
+			<p><?php echo $watch['category'] . "<br>" . $watch['gender'] ?></p>
 
 			<!-- update product info -->
 			<a href="edit_product_form.php?update=<?php echo $watch['id']; ?>">Update</a>

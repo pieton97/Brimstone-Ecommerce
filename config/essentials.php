@@ -48,7 +48,7 @@ function display_error()
 	}
 }
 
-function grabAllWatches() 
+function grabAllProducts() 
 {
 	global $pdo;
 	$query = "SELECT * FROM products";
@@ -56,6 +56,28 @@ function grabAllWatches()
 	$stmt->execute();
 	$watches = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return $watches;
+}
+
+function grabProductsByCategory($category) 
+{
+	global $pdo;
+	$query = "SELECT * FROM products WHERE category = ?";
+	$stmt = $pdo->prepare($query);
+	$stmt->execute([$category]);
+	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+	return $products;
+}
+
+function grabProductsByGender($gender) 
+{
+	global $pdo;
+	$query = "SELECT * FROM products WHERE gender = ?";
+	$stmt = $pdo->prepare($query);
+	$stmt->execute([$gender]);
+	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+	return $products;
 }
 
 function grabProduct($product_id) 

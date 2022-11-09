@@ -2,8 +2,14 @@
 include('../config/essentials.php');
 include('config/edit_cart.php');
 
-$watches = grabAllProducts();
-
+if (isset($_GET['category'])) {
+	$category = $_GET['category'];
+	$products = grabProductsByCategory($category);
+}
+if (isset($_GET['gender'])) {
+	$gender = $_GET['gender'];
+	$products = grabProductsByGender($gender);
+}
 ?>
 
 <?php include("templates/header.php") ?>
@@ -11,12 +17,9 @@ $watches = grabAllProducts();
 <!-- notification message -->
 <?php include('templates/notifications.php'); ?>
 
-<img style="display: block; margin: 20px auto;" src="../images/dddd.jpg" width="100%" alt="">
-<h1 style="text-align: center;">hello there this is the homepage</h1>
-
 <!-- Displaying products -->
 <div class="products-container">
-	<?php foreach ($watches as $watch) { ?>
+	<?php foreach ($products as $watch) { ?>
 		<div class="product">
 			<p><?php echo $watch['title']; ?></p>
 			<img class="product-img" src="../product_images/<?php echo $watch['img_name'] ?>" alt="">
@@ -42,15 +45,6 @@ $watches = grabAllProducts();
 			</form>
 		</div>
 	<?php } ?>
-</div>
-
-<div>
-	<h3 style="text-align: center;">Sign up for discounts:</h3>
-	<form action="" method="POST">
-		<input type="text" name="name" placeholder="Enter your name...">
-		<input type="email" name="email" placeholder="Enter your email...">
-		<button type="submit" name="mailing_list">Sign up</button>
-	</form>
 </div>
 
 <?php include("templates/footer.php") ?>
