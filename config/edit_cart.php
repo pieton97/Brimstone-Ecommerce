@@ -28,14 +28,37 @@ if (isset($_POST['add_cart'])) {
 	if ($rowCount > 0) {
 		array_push($errors, "Already in cart");
 	} else {
-		$query = "INSERT INTO `cart`(user_id, product_id, quantity) VALUES(?,?,?)";
+		$query = "INSERT INTO cart(user_id, product_id, quantity) VALUES(?,?,?)";
 		$stmt = $pdo->prepare($query);
 		$stmt->execute([$user_id, $product_id, $quantity]);
 
 		$_SESSION['success']  = "New product successfully added!!";
 	}
-	
+
 	echo json_encode('output test123');
+};
+
+
+
+$a = "";
+if (isset($_POST['checkout_cart'])) {
+	$a = $_POST['name'];
+	$b = $_POST['email'];
+	$c = $_POST['address'];
+	$d = $_POST['phone'];
+	// $curPurchase = unserialize($_POST['purchased_items']);
+	// $curPurchase = json_decode(base64_decode($_POST['purchased_items']));
+	$curPurchase = base64_decode($_POST['purchased_items']);
+
+	$query = 'INSERT INTO purchase_history 
+	(name,address,items_bought)
+	VALUES(?,?,?)';
+	$stmt = $pdo->prepare($query);
+	$stmt->execute([$a,$c,$curPurchase]);
+	// $stmt2 = $conn->prepare('DELETE FROM cart');
+	// $stmt2->execute();
+
+	// echo "<pre>" . print_r($curPurchase, true) . "</pre>";
 };
 
 if (isset($_POST['update_cart'])) {

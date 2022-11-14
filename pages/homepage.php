@@ -4,6 +4,20 @@ include('config/edit_cart.php');
 
 $watches = grabAllProducts();
 
+$query = "SELECT * FROM purchase_history";
+$stmt = $pdo->prepare($query);
+$stmt->execute();
+$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$productss = json_decode($orders[0]['items_bought']);
+
+echo "<pre>" . print_r($orders, true) . "</pre>";
+echo "<pre>" . print_r($productss, true) . "</pre>";
+
+foreach ($productss as $item) {
+	echo $item->title . '<br>';
+};
+
 ?>
 
 <?php include("templates/header.php") ?>

@@ -77,6 +77,6 @@ if (isset($_GET['update'])) {
 <?php include("templates/footer.php") ?>
 
 <?php
-$watches = grabAllWatches();
+$watches = grabAllProducts();
 echo "<pre>" . print_r($watches, true) . "</pre>";
 ?>
