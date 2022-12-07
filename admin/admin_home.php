@@ -43,7 +43,7 @@ $productss = json_decode($orders[0]['items_bought'], true);	//only have to decod
 <div class="products-container">
 	<div class="edit-products">
 		<p>Current products:</p>
-		<a href="add_product_form.php">add product</a>
+		<a href="add_product_form.php">Add product</a>
 	</div>
 	<?php foreach ($watches as $watch) { ?>
 		<div class="product">
