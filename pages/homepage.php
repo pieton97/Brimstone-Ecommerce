@@ -3,21 +3,6 @@ include('../config/essentials.php');
 include('config/edit_cart.php');
 
 $watches = grabAllProducts();
-
-$query = "SELECT * FROM purchase_history";
-$stmt = $pdo->prepare($query);
-$stmt->execute();
-$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$productss = json_decode($orders[0]['items_bought']);
-
-echo "<pre>" . print_r($orders, true) . "</pre>";
-echo "<pre>" . print_r($productss, true) . "</pre>";
-
-foreach ($productss as $item) {
-	echo $item->title . '<br>';
-};
-
 ?>
 
 <?php include("templates/header.php") ?>
@@ -40,7 +25,7 @@ foreach ($productss as $item) {
 			<!-- adds to cart -->
 			<form method="post" action="homepage.php">
 				<input type="hidden" name="quantity" value="1">
-				<input type="hidden" name="user_id" value="<?php echo $_SESSION['user']['id']; ?>">
+				<input type="hidden" name="user_id" value="<?php echo $user_id ?>">
 				<input type="hidden" name="product_id" value="<?php echo $watch['id']; ?>">
 				<input type="submit" name="add_cart" value="add to cart" class="btn brand z-depth-0">
 			</form>
@@ -48,10 +33,9 @@ foreach ($productss as $item) {
 			<!-- adds to cart, ajax style -->
 			<form method="POST" onsubmit="return test123(this);">
 				<input type="hidden" name="quantity" value="1">
-				<input type="hidden" name="user_id" value="<?php echo $_SESSION['user']['id']; ?>">
+				<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 				<input type="hidden" name="product_id" value="<?php echo $watch['id']; ?>">
 				<input type="submit" name="add_cart" value="add to cart">
-
 				<!-- <input type="submit" value="Insert"> -->
 			</form>
 		</div>

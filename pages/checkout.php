@@ -2,11 +2,17 @@
 include('../config/essentials.php');
 include('config/edit_cart.php');
 
-if (!isLoggedIn() || !isset($_SESSION["shopping_cart"])) {
+if (!isLoggedIn() || count($_SESSION["shopping_cart"]) == 0) {
 	$_SESSION['msg'] = "You must log in first";
 	header('location: login.php');
 };
 $curPurchase = array();
+// recalculates total price
+$total_price = 0;
+foreach ($_SESSION["shopping_cart"] as $product) {
+	$total_price += $product["price"] * $product["quantity"];
+};
+$_SESSION['total_price'] = $total_price;
 ?>
 
 <?php include("templates/header.php") ?>
@@ -30,6 +36,8 @@ $curPurchase = array();
 				$curItem = array();
 				$curItem['title'] = $product['title'];
 				$curItem['img_name'] = $product['img_name'];
+				$curItem['quantity'] = $product['quantity'];
+				$curItem['amount_paid'] = $_SESSION['total_price'];
 				array_push($curPurchase, $curItem);
 			?>
 				<tr>
@@ -58,30 +66,35 @@ $curPurchase = array();
 
 
 	<div class="input-group">
-		<label for="name">Name</label>
-		<input type="text" id="name" name="name" value="<?php echo $a ?>">
+		<label for="email">Email address</label>
+		<input type="email" id="email" name="email" value="<?php echo $email ?>" required>
 	</div>
 	<div class="input-group">
-		<label for="email">Email</label>
-		<input type="email" id="email" name="email" value="">
+		<label for="f-name">First Name</label>
+		<input type="text" id="f-name" name="first_name" value="<?php echo $fName ?>" required>
+	</div>
+	<div class="input-group">
+		<label for="l-name">Last Name</label>
+		<input type="text" id="l-name" name="last_name" value="<?php echo $lName ?>" required>
 	</div>
 	<div class="input-group">
 		<label for="address">Address (street, city, state)</label>
-		<input type="text" id="address" name="address" value="">
+		<input type="text" id="address" name="address" value="<?php echo $address ?>" required>
 	</div>
 	<div class="input-group">
 		<label for="phone">Phone Number</label>
-		<input type="text" id="phone" name="phone" value="">
+		<input type="text" id="phone" name="phone" value="<?php echo $phone ?>" required>
 	</div>
 	<div class="input-group">
 		<label>Select Payment Type</label>
-		<select name='payment'>
-			<option>-Select Payment Type-</option>
+		<select name='payment' required>
+			<option value="">-Select Payment Type-</option>
 			<option value="cash">Cash On Delivery</option>
 			<option value="card">Debit/Credit Card</option>
 		</select>
 	</div>
 
+	<input type="hidden" name="total_paid" value="<?php echo $_SESSION['total_price']; ?>">
 	<input type="hidden" name="purchased_items" value="<?php echo base64_encode(json_encode($curPurchase)); ?>">
 	<button type="submit" class="btn" name="checkout_cart">Place order</button>
 </form>
@@ -89,8 +102,7 @@ $curPurchase = array();
 
 <?php include("templates/footer.php") ?>
 
-<?php 
-	echo var_dump($curPurchase);
-	echo "<pre>" . print_r($curPurchase, true) . "</pre>";
+<?php
+echo "<pre>" . print_r($curPurchase, true) . "</pre>";
 
 ?>

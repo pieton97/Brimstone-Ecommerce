@@ -2,11 +2,11 @@
 include('../config/essentials.php');
 include('config/edit_cart.php');
 
-// if (!isLoggedIn()) 
-// {
-// 	$_SESSION['msg'] = "You must log in first";
-// 	header('location: login.php');
-// };
+if (!isLoggedIn()) 
+{
+	$_SESSION['msg'] = "You must log in first";
+	header('location: login.php');
+};
 
 if (isLoggedIn()) {
 	$_SESSION['shopping_cart'] = grabUserCart();
@@ -40,7 +40,7 @@ if (isLoggedIn()) {
 </div>
 
 <?php
-if (isset($_SESSION["shopping_cart"])) :
+if (count($_SESSION["shopping_cart"]) > 0) :
 ?>
 	<table class="table">
 		<tbody>
@@ -89,7 +89,11 @@ if (isset($_SESSION["shopping_cart"])) :
 		</tbody>
 	</table>
 <?php
-else : echo "<h3>Your cart is empty!</h3>";
+else :
+?>
+	<h3>Your cart is empty!</h3>
+	<p>Try adding something to cart...</p>
+<?php
 endif;
 ?>
 
