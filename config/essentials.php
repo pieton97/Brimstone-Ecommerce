@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 echo getcwd() . "<br>";
@@ -6,12 +6,27 @@ chdir('C://xampp/htdocs/brimstone');
 echo getcwd() . "<br>";
 // chdir($_SERVER['HOMEPATH']);
 
+function debug_to_console($data)
+{
+	$output = $data;
+	if (is_array($output))
+		$output = implode(',', $output);
+
+	echo "<script>console.log('Debug: " . $output . "' );</script>";
+}
+
+if (isset($_SESSION['user'])) {
+	$user_id = $_SESSION['user']['id'];
+} else {
+	$user_id = null;
+}
+
 // tells you if a user is logged in or not
 function isLoggedIn()
 {
 	if (isset($_SESSION['user'])) {
 		return true;
-	}else{
+	} else {
 		return false;
 	}
 }
@@ -19,15 +34,14 @@ function isLoggedIn()
 // checks if logged in user is an admin
 function isAdmin()
 {
-	if (isset($_SESSION['user']) && $_SESSION['user']['user_type'] == 'admin' ) {
+	if (isset($_SESSION['user']) && $_SESSION['user']['user_type'] == 'admin') {
 		return true;
-	}else{
+	} else {
 		return false;
 	}
 }
 
-if (isset($_GET['logout'])) 
-{
+if (isset($_GET['logout'])) {
 	session_destroy();
 	unset($_SESSION['user']);
 	header("Location: ../pages/login.php");
@@ -38,8 +52,7 @@ $errors = array();
 function display_error()
 {
 	global $errors;
-	if (count($errors) > 0) 
-	{
+	if (count($errors) > 0) {
 		echo '<div class="error">';
 		foreach ($errors as $error) {
 			echo $error . '<br>';
@@ -48,7 +61,7 @@ function display_error()
 	}
 }
 
-function grabAllProducts() 
+function grabAllProducts()
 {
 	global $pdo;
 	$query = "SELECT * FROM products";
@@ -58,7 +71,7 @@ function grabAllProducts()
 	return $watches;
 }
 
-function grabProductsByCategory($category) 
+function grabProductsByCategory($category)
 {
 	global $pdo;
 	$query = "SELECT * FROM products WHERE category = ?";
@@ -69,7 +82,7 @@ function grabProductsByCategory($category)
 	return $products;
 }
 
-function grabProductsByGender($gender) 
+function grabProductsByGender($gender)
 {
 	global $pdo;
 	$query = "SELECT * FROM products WHERE gender = ?";
@@ -80,7 +93,7 @@ function grabProductsByGender($gender)
 	return $products;
 }
 
-function grabProduct($product_id) 
+function grabProduct($product_id)
 {
 	global $pdo;
 	$query = "SELECT * FROM products WHERE id = ?";
@@ -118,7 +131,7 @@ function grabUserCart()
 	return $cart;
 }
 
-function grabAllUsers() 
+function grabAllUsers()
 {
 	global $pdo;
 	$query = "SELECT * FROM users ORDER BY user_type ASC";
@@ -127,3 +140,14 @@ function grabAllUsers()
 	$users = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	return $users;
 }
+
+function grabAllOrdersByID($id)
+{
+	global $pdo;
+	$query = "SELECT * FROM placed_orders Where account_id = ?";
+	$stmt = $pdo->prepare($query);
+	$stmt->execute([$id]);
+	$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+	return $orders;
+};

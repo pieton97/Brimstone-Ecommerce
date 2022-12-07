@@ -1,16 +1,30 @@
 <?php
 include('../config/essentials.php');
-include('config/functions.php');
-include('config/edit_cart.php');
-
 if (isAdmin() === false) {
 	$_SESSION['msg'] = "You must log in first";
 	header('location: ../pages/login.php');
-}
+};
+
+include('config/functions.php');
+include('config/edit_cart.php');
 
 $watches = grabAllProducts();
 $cart = grabUserCart();
 $users = grabAllUsers();
+$orders = grabAllOrders();
+?>
+
+
+<?php 
+$query = "SELECT * FROM placed_orders";
+$stmt = $pdo->prepare($query);
+$stmt->execute();
+$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$productss = json_decode($orders[0]['items_bought'], true);	//only have to decode 'items_bought'
+
+// echo "<pre>" . print_r($orders, true) . "</pre>";
+// echo "<pre>" . print_r($productss, true) . "</pre>";
 ?>
 
 
@@ -42,7 +56,7 @@ $users = grabAllUsers();
 			<a href="edit_product_form.php?update=<?php echo $watch['id']; ?>">Update</a>
 
 			<!-- delete product -->
-			<a href="add_product_form.php?delete=<?php echo $watch['id']; ?>" onclick="return confirm('Pernamently remove this product?');">Delete</a>
+			<a href="add_product_form.php?delete=<?php echo $watch['id'].'&img_name='.$watch['img_name']; ?>" onclick="return confirm('Pernamently remove this product?');">Delete</a>
 
 			<!-- adds to cart -->
 			<form method="post" action="admin_home.php">
@@ -71,9 +85,21 @@ $users = grabAllUsers();
 	<?php } ?>
 </div>
 
+<!-- Displaying placed orders -->
+<div class="user-list">
+	<?php foreach ($orders as $order) { ?>
+		<div class="user">
+			<p>order id: <?php echo $order['id']; ?></p>
+			<p>account id: <?php echo $order['account_id']; ?></p>
+			<p>total paid: <?php echo $order['total_paid']; ?>.00</p>
+			<a href="admin_home.php?cancel_order=<?php echo $order['id']; ?>" onclick="return confirm('Cancel this order?');">Cancel Order</a>
+		</div>
+	<?php } ?>
+</div>
+
 <?php include("templates/footer.php") ?>
 
 <?php
-// echo "<pre>" . print_r($cart, true) . "</pre>";
+// echo "<pre>" . print_r($orders, true) . "</pre>";
 echo "<pre>" . print_r($watches, true) . "</pre>";
 ?>

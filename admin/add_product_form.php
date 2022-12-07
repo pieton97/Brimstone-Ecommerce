@@ -5,6 +5,7 @@ if (isAdmin() === false) {
 	$_SESSION['msg'] = "You must log in first";
 	header('location: ../login.php');
 }
+
 ?>
 
 <?php include("templates/header.php"); ?>
@@ -13,10 +14,10 @@ if (isAdmin() === false) {
 	<h2>Add product</h2>
 </div>
 
-<form method="post" action="add_product_form.php">
+<form method="post" action="add_product_form.php" enctype="multipart/form-data">
 	<!-- notification message -->
 	<?php include('templates/notifications.php'); ?>
-	
+
 	<div class="input-group">
 		<label for="title">Title</label>
 		<input type="text" id="title" name="title" value="<?php echo $title; ?>">
@@ -24,6 +25,11 @@ if (isAdmin() === false) {
 	<div class="input-group">
 		<label>Img Name</label>
 		<input type="text" name="img_name" value="<?php echo $img_name; ?>">
+	</div>
+	<div class="input-group">
+		<label for="product_img">Choose a product picture:</label>
+		<!-- <input type="hidden" name="MAX_FILE_SIZE" value="512000" /> -->
+		<input id="product_img" name="product_img" type="file" accept="image/png, image/jpeg, image/svg" />
 	</div>
 	<div class="input-group">
 		<label>Category</label>
@@ -43,7 +49,7 @@ if (isAdmin() === false) {
 	</div>
 	<div class="input-group">
 		<label>Description</label>
-		<input type="text" name="description" value="<?php echo $description; ?>">
+		<textarea id="description" name="description"><?php echo htmlspecialchars($description); ?></textarea>
 	</div>
 	<div class="input-group">
 		<label>Price</label>

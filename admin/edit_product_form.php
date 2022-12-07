@@ -32,7 +32,7 @@ if (isset($_GET['update'])) {
 <form method="post" action="edit_product_form.php">
 	<!-- notification message -->
 	<?php include('templates/notifications.php'); ?>
-	
+
 	<div class="input-group">
 		<label for="title">Title</label>
 		<input type="text" id="title" name="title" value="<?php echo $title; ?>">
@@ -59,7 +59,7 @@ if (isset($_GET['update'])) {
 	</div>
 	<div class="input-group">
 		<label>Description</label>
-		<input type="text" name="description" value="<?php echo $description; ?>">
+		<textarea id="description" name="description"><?php echo htmlspecialchars($description); ?></textarea>
 	</div>
 	<div class="input-group">
 		<label>Price</label>
