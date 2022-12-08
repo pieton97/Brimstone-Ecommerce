@@ -22,13 +22,12 @@ if (isAdmin() === false) {
 		<label for="title">Title</label>
 		<input type="text" id="title" name="title" value="<?php echo $title; ?>">
 	</div>
-	<div class="input-group">
+	<!-- <div class="input-group">
 		<label>Img Name</label>
 		<input type="text" name="img_name" value="<?php echo $img_name; ?>">
-	</div>
+	</div> -->
 	<div class="input-group">
 		<label for="product_img">Choose a product picture:</label>
-		<!-- <input type="hidden" name="MAX_FILE_SIZE" value="512000" /> -->
 		<input id="product_img" name="product_img" type="file" accept="image/png, image/jpeg, image/svg" />
 	</div>
 	<div class="input-group">
@@ -37,14 +36,19 @@ if (isAdmin() === false) {
 			<option value=""></option>
 			<option value="watch">watch</option>
 			<option value="bracelet">bracelet</option>
+			<option value="cake">cake</option>
+			<option value="pies">pies</option>
+			<option value="cookies">cookies</option>
+			<option value="ice-cream">ice cream</option>
 		</select>
 	</div>
 	<div class="input-group">
-		<label>Gender</label>
-		<select name="gender">
-			<option value=""></option>
+		<label>Subcategory</label>
+		<select name="subcategory">
+			<option value="none">none</option>
 			<option value="male">male</option>
 			<option value="female">female</option>
+			<option value="holiday">holiday</option>
 		</select>
 	</div>
 	<div class="input-group">

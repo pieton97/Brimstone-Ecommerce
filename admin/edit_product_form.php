@@ -50,11 +50,13 @@ if (isset($_GET['update'])) {
 		</select>
 	</div>
 	<div class="input-group">
-		<label>Gender</label>
-		<select name="gender">
+		<label>Subcategory</label>
+		<select name="subcategory">
 			<option value="<?php echo $gender; ?>"><?php echo $gender; ?> (current)</option>
+			<option value="none">none</option>
 			<option value="male">male</option>
 			<option value="female">female</option>
+			<option value="holiday">holiday</option>
 		</select>
 	</div>
 	<div class="input-group">

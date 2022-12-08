@@ -13,7 +13,6 @@ $email    = "";
 if (isset($_POST['register_btn'])) {
 	register();
 }
-
 // REGISTER USER
 function register()
 {
@@ -147,6 +146,9 @@ function deleteUser()
 		$stmt = $pdo->prepare($sql);
 		$stmt->execute([$id_to_delete]);
 		// header('Location: ../admin/admin_home.php');
+		$sql2 = "DELETE FROM cart WHERE user_id=?";
+		$stmt2 = $pdo->prepare($sql2);
+		$stmt2->execute([$id_to_delete]);
 	} catch (PDOException $e) {
 		echo $sql . "<br>" . $e->getMessage();
 	}

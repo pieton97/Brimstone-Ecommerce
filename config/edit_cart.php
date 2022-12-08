@@ -101,6 +101,15 @@ if (isset($_POST['checkout_cart'])) {
 	// echo "<pre>" . print_r($curPurchase, true) . "</pre>";
 };
 
+function calcTotalPrice()
+{
+	$total_price = 0;
+	foreach (grabUserCart() as $product) {
+		$total_price += $product["price"] * $product["quantity"];
+	};
+	return $total_price;
+}
+
 // managing placed orders from admin panel
 function grabAllOrders()
 {
@@ -125,6 +134,4 @@ if (isset($_GET['cancel_order'])) {
 	};
 
 	$_SESSION['success']  = "Order Canceled";
-
-	// header('location: ../pages/cart.php');
 };

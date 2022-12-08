@@ -82,12 +82,12 @@ function grabProductsByCategory($category)
 	return $products;
 }
 
-function grabProductsByGender($gender)
+function grabProductsBySubcategory($subcategory)
 {
 	global $pdo;
-	$query = "SELECT * FROM products WHERE gender = ?";
+	$query = "SELECT * FROM products WHERE subcategory = ?";
 	$stmt = $pdo->prepare($query);
-	$stmt->execute([$gender]);
+	$stmt->execute([$subcategory]);
 	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 	return $products;

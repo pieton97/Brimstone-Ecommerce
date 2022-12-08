@@ -1,6 +1,7 @@
 <?php
 include('../config/essentials.php');
 include('config/functions.php');
+include('config/edit_cart.php');
 
 if (!isLoggedIn()) {
 	$_SESSION['msg'] = "You must log in first";
@@ -32,7 +33,7 @@ $orders = grabAllOrdersByID($user_id);
 			<p><?php echo $order['fname'] . ' ' . $order['lname']; ?></p>
 			<p><?php echo $order['address']; ?></p>
 			<p>total paid: <?php echo $order['total_paid']; ?>.00</p>
-			<a href="admin_home.php?cancel_order=<?php echo $order['id']; ?>" onclick="return confirm('Cancel this order?');">Cancel Order</a>
+			<a href="my_account.php?cancel_order=<?php echo $order['id']; ?>" onclick="return confirm('Cancel this order?');">Cancel Order</a>
 		</div>
 	<?php } ?>
 </div>

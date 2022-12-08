@@ -10,11 +10,8 @@ if (!isLoggedIn())
 
 if (isLoggedIn()) {
 	$_SESSION['shopping_cart'] = grabUserCart();
-	$total_price = 0;
-	foreach ($_SESSION["shopping_cart"] as $product) {
-		$total_price += $product["price"] * $product["quantity"];
-	};
-	$_SESSION['total_price'] = $total_price;
+	$total_price = calcTotalPrice();
+	// $_SESSION['total_price'] = $total_price;
 } else {
 	// $cart = $_SESSION['guest_cart'];
 	// $_SESSION['shopping_cart'] = array();
@@ -82,7 +79,7 @@ if (count($_SESSION["shopping_cart"]) > 0) :
 				<td></td>
 				<td>TOTAL:</td>
 				<td>
-					<strong><?php echo "$" . $_SESSION['total_price'] . ".00"; ?></strong>
+					<strong><?php echo "$" . $total_price . ".00"; ?></strong>
 				</td>
 				<td><a href="checkout.php?">Checkout</a></td>
 			</tr>

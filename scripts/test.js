@@ -1,7 +1,7 @@
 let loc = window.location.pathname;
 console.log(loc);
 console.log(window.location.href);
-// console.log("hiihihi");
+console.log("hiihihi");
 
 const test123 = (form) => {
   let quantity = form.quantity.value;

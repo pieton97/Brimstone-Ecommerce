@@ -8,11 +8,8 @@ if (!isLoggedIn() || count($_SESSION["shopping_cart"]) == 0) {
 };
 $curPurchase = array();
 // recalculates total price
-$total_price = 0;
-foreach ($_SESSION["shopping_cart"] as $product) {
-	$total_price += $product["price"] * $product["quantity"];
-};
-$_SESSION['total_price'] = $total_price;
+$total_price = calcTotalPrice();
+// $_SESSION['total_price'] = $total_price;
 ?>
 
 <?php include("templates/header.php") ?>
@@ -37,7 +34,6 @@ $_SESSION['total_price'] = $total_price;
 				$curItem['title'] = $product['title'];
 				$curItem['img_name'] = $product['img_name'];
 				$curItem['quantity'] = $product['quantity'];
-				$curItem['amount_paid'] = $_SESSION['total_price'];
 				array_push($curPurchase, $curItem);
 			?>
 				<tr>
@@ -57,7 +53,7 @@ $_SESSION['total_price'] = $total_price;
 				<td></td>
 				<td>TOTAL:</td>
 				<td>
-					<strong><?php echo "$" . $_SESSION['total_price'] . ".00"; ?></strong>
+					<strong><?php echo "$" . $total_price . ".00"; ?></strong>
 				</td>
 				<td></td>
 			</tr>
@@ -94,7 +90,7 @@ $_SESSION['total_price'] = $total_price;
 		</select>
 	</div>
 
-	<input type="hidden" name="total_paid" value="<?php echo $_SESSION['total_price']; ?>">
+	<input type="hidden" name="total_paid" value="<?php echo $total_price; ?>">
 	<input type="hidden" name="purchased_items" value="<?php echo base64_encode(json_encode($curPurchase)); ?>">
 	<button type="submit" class="btn" name="checkout_cart">Place order</button>
 </form>

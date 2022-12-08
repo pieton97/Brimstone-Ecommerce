@@ -2,7 +2,8 @@
 <html>
 
 <head>
-	<title>Brimstone Collective</title>
+	<title>Milky Treats</title>
+	<!-- <link rel="icon" href="../images/cookieslogo.png"> -->
 
 	<link rel="stylesheet" type="text/css" href="../styles/style.css?v=<?php echo time(); ?>">
 
@@ -16,13 +17,14 @@
 <body>
 
 	<nav>
-		<a href="../pages/homepage.php">Brimstone Collective</a>
+		<a href="../pages/homepage.php">Milky Treats</a>
 		<ul>
 			<li><a href="../pages/view_category.php?category=watch">Watches</a></li>
-			<li><a href="../pages/view_category.php?category=bracelet">Bracelets</a></li>
+			<li><a href="../pages/view_category.php?category=cookies">Cookies</a></li>
 			|
-			<li><a href="../pages/view_category.php?gender=male">Men</a></li>
-			<li><a href="../pages/view_category.php?gender=female">Women</a></li>
+			<li><a href="../pages/view_category.php?subcategory=male">Men</a></li>
+			<li><a href="../pages/view_category.php?subcategory=female">Women</a></li>
+			<li><a href="../pages/view_category.php?subcategory=none">none</a></li>
 		</ul>
 		<ul>
 			<li><a href="../pages/cart.php">Cart</a></li>
