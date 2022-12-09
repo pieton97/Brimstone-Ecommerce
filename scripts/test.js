@@ -9,6 +9,7 @@ const test123 = (form) => {
   let product_id = form.product_id.value;
   let add_cart = form.add_cart.value;
 
+	console.log(user_id);
   //   alert([quantity, user_id, product_id,add_cart]);
 
   let ajax = new XMLHttpRequest();
@@ -18,7 +19,8 @@ const test123 = (form) => {
 
   ajax.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      // alert(this.responseText);
+      console.log("ajax almost success");
+
       let response = JSON.parse(ajax.responseText);
       console.log("response from php: ", response);
 
@@ -26,6 +28,8 @@ const test123 = (form) => {
       form.add_cart.disabled = true;
 
       console.log("ajax success");
+    } else if (this.readyState == 4) {
+      console.log("state of 4");
     } else {
       console.log("failed ajaxs");
     }

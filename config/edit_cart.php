@@ -7,27 +7,45 @@ if (isset($_POST['add_cart'])) {
 	// sleep(2);
 	$user_id = $_POST['user_id'];
 	if ($user_id == null) {
-		header('location: ../pages/login.php');
-	}
-	$product_id = $_POST['product_id'];
-	$quantity = $_POST['quantity'];
+		$product_id = $_POST['product_id'];
+		$quantity = $_POST['quantity'];
 
-	$query = "SELECT * FROM `cart` WHERE user_id=? AND product_id=?";
-	$stmt = $pdo->prepare($query);
-	$stmt->execute([$user_id, $product_id]);
-	$rowCount = $stmt->rowCount();
+		$added_product = array("product_id" => $product_id, "quantity" => $quantity);
+		$added_product = array_merge($added_product, grabProduct($product_id));
+		$_SESSION['shopping_cart'][$product_id] = $added_product;
 
-	if ($rowCount > 0) {
-		array_push($errors, "Already in cart");
+		debug_to_console(isset($_SESSION['guest_cart'][2]));
+		// echo "<pre>" . print_r($added_product, true) . "</pre>";
+		// echo "<pre>" . print_r($_SESSION['guest_cart'], true) . "</pre>";
+		// echo "<pre>" . print_r(grabProduct($product_id), true) . "</pre>";
+
+
+		// create array to store added item, grab product details from db, store to array
+		// then save to session shopping cart
+		// on login can just merge current cart with db
+
+		echo json_encode('output test1ddd23'); // for ajax
 	} else {
-		$query = "INSERT INTO cart(user_id, product_id, quantity) VALUES(?,?,?)";
+		$product_id = $_POST['product_id'];
+		$quantity = $_POST['quantity'];
+
+		$query = "SELECT * FROM `cart` WHERE user_id=? AND product_id=?";
 		$stmt = $pdo->prepare($query);
-		$stmt->execute([$user_id, $product_id, $quantity]);
+		$stmt->execute([$user_id, $product_id]);
+		$rowCount = $stmt->rowCount();
 
-		$_SESSION['success']  = "New product successfully added!!";
+		if ($rowCount > 0) {
+			array_push($errors, "Already in cart");
+		} else {
+			$query = "INSERT INTO cart(user_id, product_id, quantity) VALUES(?,?,?)";
+			$stmt = $pdo->prepare($query);
+			$stmt->execute([$user_id, $product_id, $quantity]);
+
+			$_SESSION['success']  = "New product successfully added!!";
+		}
+
+		echo json_encode('output test123'); //for ajax response
 	}
-
-	echo json_encode('output test123');
 };
 
 if (isset($_POST['update_cart'])) {

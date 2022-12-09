@@ -2,7 +2,7 @@
 include('../config/essentials.php');
 include('config/edit_cart.php');
 
-$watches = grabAllProducts();
+$products = grabAllProducts();
 ?>
 
 <?php include("templates/header.php") ?>
@@ -15,27 +15,27 @@ $watches = grabAllProducts();
 
 <!-- Displaying products -->
 <div class="products-container">
-	<?php foreach ($watches as $watch) { ?>
+	<?php foreach ($products as $product) { ?>
 		<div class="product">
-			<p><?php echo $watch['title']; ?></p>
-			<img class="product-img" src="../product_images/<?php echo $watch['img_name'] ?>" alt="">
-			<p>$<?php echo $watch['price'] ?></p>
-			<a href="view_product.php?product=<?php echo $watch['id'] ?>">View product</a>
+			<p><?php echo $product['title']; ?></p>
+			<img class="product-img" src="../product_images/<?php echo $product['img_name'] ?>" alt="">
+			<p>$<?php echo $product['price'] ?></p>
+			<a href="view_product.php?product=<?php echo $product['id'] ?>">View product</a>
 
 			<!-- adds to cart -->
 			<form method="post" action="homepage.php">
 				<input type="hidden" name="quantity" value="1">
 				<input type="hidden" name="user_id" value="<?php echo $user_id ?>">
-				<input type="hidden" name="product_id" value="<?php echo $watch['id']; ?>">
-				<input type="submit" name="add_cart" value="add to cart" class="btn brand z-depth-0">
+				<input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+				<input type="submit" name="add_cart" value="add-to-cart" class="btn brand z-depth-0">
 			</form>
 
 			<!-- adds to cart, ajax style -->
 			<form method="POST" onsubmit="return test123(this);">
 				<input type="hidden" name="quantity" value="1">
 				<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-				<input type="hidden" name="product_id" value="<?php echo $watch['id']; ?>">
-				<input type="submit" name="add_cart" value="add to cart">
+				<input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+				<input type="submit" name="add_cart" value="add-to-cart">
 				<!-- <input type="submit" value="Insert"> -->
 			</form>
 		</div>

@@ -15,10 +15,13 @@ if (isset($_GET['update'])) {
 	$stmt->execute([$update_id]);
 	$watch = $stmt->fetch(PDO::FETCH_ASSOC);
 	echo "<pre>" . print_r($watch, true) . "</pre>";
+	// foreach ($watch as $key => $val) {
+	// 	echo $key . " : " . $val . "<br>";
+	// }
 	$title        =  $watch['title'];
 	$img_name     =  $watch['img_name'];
 	$category     =  $watch['category'];
-	$gender    		=  $watch['gender'];
+	$subcategory    		=  $watch['subcategory'];
 	$description  =  $watch['description'];
 	$price        =  $watch['price'];
 }
@@ -47,12 +50,16 @@ if (isset($_GET['update'])) {
 			<option value="<?php echo $category; ?>"><?php echo $category; ?> (current)</option>
 			<option value="watch">watch</option>
 			<option value="bracelet">bracelet</option>
+			<option value="cake">cake</option>
+			<option value="pies">pies</option>
+			<option value="cookies">cookies</option>
+			<option value="ice-cream">ice cream</option>
 		</select>
 	</div>
 	<div class="input-group">
 		<label>Subcategory</label>
 		<select name="subcategory">
-			<option value="<?php echo $gender; ?>"><?php echo $gender; ?> (current)</option>
+			<option value="<?php echo $subcategory; ?>"><?php echo $subcategory; ?> (current)</option>
 			<option value="none">none</option>
 			<option value="male">male</option>
 			<option value="female">female</option>
@@ -79,6 +86,7 @@ if (isset($_GET['update'])) {
 <?php include("templates/footer.php") ?>
 
 <?php
-$watches = grabAllProducts();
-echo "<pre>" . print_r($watches, true) . "</pre>";
+$products = grabAllProducts();
+// echo "<pre>" . print_r($products, true) . "</pre>";
+
 ?>

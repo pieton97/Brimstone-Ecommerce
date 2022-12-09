@@ -2,10 +2,9 @@
 include('../config/essentials.php');
 include('config/edit_cart.php');
 
-if (!isLoggedIn()) 
-{
-	$_SESSION['msg'] = "You must log in first";
-	header('location: login.php');
+if (!isLoggedIn()) {
+	// $_SESSION['msg'] = "You must log in first";
+	// header('location: login.php');
 };
 
 if (isLoggedIn()) {
@@ -13,12 +12,13 @@ if (isLoggedIn()) {
 	$total_price = calcTotalPrice();
 	// $_SESSION['total_price'] = $total_price;
 } else {
-	// $cart = $_SESSION['guest_cart'];
 	// $_SESSION['shopping_cart'] = array();
+	// $_SESSION['guest_cart'] = array();
+	$total_price = 0;
 }
 
 // $_SESSION['shopping_cart'] = $cart;
-// echo "<pre>" . print_r($_SESSION['shopping_cart'], true) . "</pre>";
+echo "<pre>" . print_r($_SESSION['shopping_cart'], true) . "</pre>";
 
 ?>
 
@@ -91,6 +91,9 @@ else :
 	<h3>Your cart is empty!</h3>
 	<p>Try adding something to cart...</p>
 <?php
+	// echo $_SESSION['guest_cart'];
+	echo 'hhhhhh';
+	echo "<pre>" . print_r($_SESSION['guest_cart'], true) . "</pre>";
 endif;
 ?>
 
