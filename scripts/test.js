@@ -1,7 +1,6 @@
 let loc = window.location.pathname;
 console.log(loc);
 console.log(window.location.href);
-console.log("hiihihi");
 
 const test123 = (form) => {
   let quantity = form.quantity.value;
@@ -9,12 +8,9 @@ const test123 = (form) => {
   let product_id = form.product_id.value;
   let add_cart = form.add_cart.value;
 
-	console.log(user_id);
-  //   alert([quantity, user_id, product_id,add_cart]);
-
   let ajax = new XMLHttpRequest();
   ajax.open("POST", "../config/edit_cart.php", true);
-  //   ajax.open("POST", "homepage.php", true);
+  // ajax.open("POST", "../pages/homepage.php", true);
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
   ajax.onreadystatechange = function () {

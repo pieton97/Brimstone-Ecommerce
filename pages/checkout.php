@@ -8,7 +8,7 @@ if (!isLoggedIn() || count($_SESSION["shopping_cart"]) == 0) {
 };
 $curPurchase = array();
 // recalculates total price
-$total_price = calcTotalPrice();
+$total_price = calcTotalPrice($_SESSION['shopping_cart']);
 // $_SESSION['total_price'] = $total_price;
 ?>
 

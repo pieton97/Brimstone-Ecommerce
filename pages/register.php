@@ -1,5 +1,6 @@
 <?php
 include('../config/essentials.php');
+include('config/edit_cart.php');
 include('config/functions.php');
 
 ?>

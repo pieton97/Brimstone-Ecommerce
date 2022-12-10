@@ -59,7 +59,10 @@ function register()
 
 			// get id of the created user
 			$logged_in_user_id = $pdo->lastInsertId();
-
+			// merges guest cart with user current cart
+			if (count($_SESSION['shopping_cart']) > 0) {
+				mergeGuestCartWithUser($_SESSION['shopping_cart'], $logged_in_user_id);
+			}
 			$_SESSION['user'] = getUserById($logged_in_user_id); // put logged in user in session
 			$_SESSION['success']  = "You are now logged in";
 			header('location: ../pages/homepage.php');
@@ -116,15 +119,17 @@ function login()
 			// check if user is admin or user
 			$logged_in_user = $user;
 			if ($logged_in_user['user_type'] == 'admin') {
-
 				$_SESSION['user'] = $logged_in_user;
 				$_SESSION['success']  = "You are now logged in";
 				header('Location: ../admin/admin_home.php');
 			} else {
 				$_SESSION['user'] = $logged_in_user;
 				$_SESSION['success']  = "You are now logged in";
-
 				header('Location: ../pages/homepage.php');
+			}
+			// merges guest cart with user current cart
+			if (count($_SESSION['shopping_cart']) > 0) {
+				mergeGuestCartWithUser($_SESSION['shopping_cart'], $user['id']);
 			}
 		} else {
 			array_push($errors, "Wrong username/password combination");
@@ -133,8 +138,7 @@ function login()
 }
 
 // delete user
-if (isset($_GET['delete_user'])) 
-{
+if (isset($_GET['delete_user'])) {
 	deleteUser();
 }
 function deleteUser()
@@ -154,5 +158,3 @@ function deleteUser()
 	}
 	$_SESSION['success']  = "User removed";
 }
-
-?>

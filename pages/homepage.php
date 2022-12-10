@@ -36,7 +36,6 @@ $products = grabAllProducts();
 				<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 				<input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
 				<input type="submit" name="add_cart" value="add-to-cart">
-				<!-- <input type="submit" value="Insert"> -->
 			</form>
 		</div>
 	<?php } ?>
