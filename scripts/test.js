@@ -14,24 +14,16 @@ const test123 = (form) => {
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
   ajax.onreadystatechange = function () {
-    if (this.readyState == 4) {
-      if (this.status == 200) {
-        // var return_data = xml.responseText;
-        // document.getElementById("status").innerHTML = return_data;
+    if (this.readyState == 4 && this.status == 200) {
+      console.log("ajax almost success");
 
-        console.log("ajax almost success");
+      let response = JSON.parse(ajax.responseText);
+      console.log("response from php: ", response);
 
-        // let response = JSON.parse(ajax.responseText);
-        // console.log("response from php: ", response);
+      form.add_cart.value = "added";
+      form.add_cart.disabled = true;
 
-        form.add_cart.value = "added";
-        form.add_cart.disabled = true;
-
-        console.log("ajax success");
-      } else {
-        alert("GNAH!");
-      }
-      console.log("state of 4");
+      console.log("ajax success");
     } else {
       console.log("failed ajaxs");
     }

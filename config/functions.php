@@ -149,7 +149,6 @@ function deleteUser()
 		$sql = "DELETE FROM users WHERE id=?";
 		$stmt = $pdo->prepare($sql);
 		$stmt->execute([$id_to_delete]);
-		// header('Location: ../admin/admin_home.php');
 		$sql2 = "DELETE FROM cart WHERE user_id=?";
 		$stmt2 = $pdo->prepare($sql2);
 		$stmt2->execute([$id_to_delete]);

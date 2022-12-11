@@ -14,14 +14,18 @@ if (isset($_POST['add_cart'])) {
 		$product_id = $_POST['product_id'];
 		$quantity = $_POST['quantity'];
 
-		$added_product = array("product_id" => $product_id, "quantity" => $quantity);
-		$added_product = array_merge($added_product, grabProduct2($product_id));
-		$_SESSION['shopping_cart'][$product_id] = $added_product;
+		if (isset($_SESSION['shopping_cart'][$product_id])) {
+			$_SESSION['shopping_cart'][$product_id]['quantity']++;
+			echo json_encode('output null userr'); // for ajax
+		} else {
+			$added_product = array("product_id" => $product_id, "quantity" => $quantity);
+			$added_product = array_merge($added_product, grabProduct2($product_id));
+			$_SESSION['shopping_cart'][$product_id] = $added_product;
+	
+			$_SESSION['success']  = "New product successfully added!!";
+			echo json_encode('output null userr'); // for ajax
+		}
 
-		echo "<pre>" . print_r($_SESSION['shopping_cart'], true) . "</pre>";
-
-		$_SESSION['success']  = "New product successfully added!!";
-		echo json_encode('output null userr'); // for ajax
 	} else {
 		$product_id = $_POST['product_id'];
 		$quantity = $_POST['quantity'];
@@ -206,6 +210,7 @@ if (isset($_GET['cancel_order'])) {
 	$_SESSION['success']  = "Order Canceled";
 };
 
+// this is for ajax of guest cart
 function grabProduct2($product_id)
 {
 	global $pdo;

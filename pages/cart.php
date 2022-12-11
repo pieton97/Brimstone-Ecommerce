@@ -10,7 +10,6 @@ if (isLoggedIn()) {
 	}
 }
 $total_price = calcTotalPrice($_SESSION['shopping_cart']);
-echo "<pre>" . print_r($_SESSION['shopping_cart'], true) . "</pre>";
 
 ?>
 
