@@ -4,7 +4,6 @@ session_start();
 echo getcwd() . "<br>";
 chdir('C://xampp/htdocs/brimstone');
 echo getcwd() . "<br>";
-// chdir($_SERVER['HOMEPATH']);
 
 function debug_to_console($data)
 {

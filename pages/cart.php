@@ -4,13 +4,13 @@ include('config/edit_cart.php');
 
 if (isLoggedIn()) {
 	$_SESSION['shopping_cart'] = grabUserCart();
-	$total_price = calcTotalPrice($_SESSION['shopping_cart']);
 } else {
 	if (!isset($_SESSION['shopping_cart'])) {
 		$_SESSION['shopping_cart'] = array();
 	}
-	$total_price = calcTotalPrice($_SESSION['shopping_cart']);
 }
+$total_price = calcTotalPrice($_SESSION['shopping_cart']);
+echo "<pre>" . print_r($_SESSION['shopping_cart'], true) . "</pre>";
 
 ?>
 

@@ -3,20 +3,25 @@
 require_once('db_connect.php');
 $pdo = pdo_connect_mysql();
 
+if (session_status() === PHP_SESSION_NONE) {
+	session_start();
+}
+
 if (isset($_POST['add_cart'])) {
 	// sleep(2);
 	$user_id = $_POST['user_id'];
-	if ($user_id == null) {
+	if ($user_id == null || $user_id == false) {
 		$product_id = $_POST['product_id'];
 		$quantity = $_POST['quantity'];
 
 		$added_product = array("product_id" => $product_id, "quantity" => $quantity);
-		$added_product = array_merge($added_product, grabProduct($product_id));
+		$added_product = array_merge($added_product, grabProduct2($product_id));
 		$_SESSION['shopping_cart'][$product_id] = $added_product;
 
+		echo "<pre>" . print_r($_SESSION['shopping_cart'], true) . "</pre>";
 
 		$_SESSION['success']  = "New product successfully added!!";
-		echo json_encode('output test1ddd23'); // for ajax
+		echo json_encode('output null userr'); // for ajax
 	} else {
 		$product_id = $_POST['product_id'];
 		$quantity = $_POST['quantity'];
@@ -41,7 +46,7 @@ if (isset($_POST['add_cart'])) {
 			$_SESSION['success']  = "New product successfully added!!";
 		}
 
-		echo json_encode('output test123ddd'); //for ajax response
+		echo json_encode('output logged in userr'); //for ajax response
 	}
 };
 
@@ -200,3 +205,15 @@ if (isset($_GET['cancel_order'])) {
 
 	$_SESSION['success']  = "Order Canceled";
 };
+
+function grabProduct2($product_id)
+{
+	global $pdo;
+	$query = "SELECT * FROM products WHERE id = ?";
+
+	$stmt = $pdo->prepare($query);
+	$stmt->execute([$product_id]);
+	$product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+	return $product;
+}
