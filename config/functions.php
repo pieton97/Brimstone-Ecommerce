@@ -59,10 +59,12 @@ function register()
 
 			// get id of the created user
 			$logged_in_user_id = $pdo->lastInsertId();
+
 			// merges guest cart with user current cart
 			if (count($_SESSION['shopping_cart']) > 0) {
 				mergeGuestCartWithUser($_SESSION['shopping_cart'], $logged_in_user_id);
 			}
+
 			$_SESSION['user'] = getUserById($logged_in_user_id); // put logged in user in session
 			$_SESSION['success']  = "You are now logged in";
 			header('location: ../pages/homepage.php');
@@ -86,8 +88,6 @@ function getUserById($id)
 if (isset($_POST['login_btn'])) {
 	login();
 }
-
-// LOGIN USER
 function login()
 {
 	global $pdo, $username, $errors;

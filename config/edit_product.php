@@ -2,7 +2,8 @@
 // connect to the database
 require_once('db_connect.php');
 $pdo = pdo_connect_mysql();
-echo __DIR__;
+// echo __DIR__;
+
 // variable declaration
 $title = "";
 $img_name = "";

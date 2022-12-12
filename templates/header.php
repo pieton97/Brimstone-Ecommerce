@@ -2,9 +2,12 @@
 <html>
 
 <head>
-	<title>Milky Treats</title>
+	<title>Milk Treats</title>
 	<!-- <link rel="icon" href="../images/cookieslogo.png"> -->
-
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<link rel="stylesheet" type="text/css" href="../styles/style.css?v=<?php echo time(); ?>">
 
 	<?php if (isAdmin()) : ?>
@@ -17,7 +20,7 @@
 <body>
 
 	<nav>
-		<a href="../pages/homepage.php">Milky Treats</a>
+		<a href="../pages/homepage.php">Milk Treats</a>
 		<ul>
 			<li><a href="../pages/view_category.php?category=watch">Watches</a></li>
 			<li><a href="../pages/view_category.php?category=cookies">Cookies</a></li>

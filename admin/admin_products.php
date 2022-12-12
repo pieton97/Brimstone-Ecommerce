@@ -11,12 +11,7 @@ include('config/edit_product.php');
 
 $products = grabAllProducts();
 // $products = array_slice($products, 0, 5);
-$cart = grabUserCart();
-$users = grabAllUsers();
-$orders = grabAllOrders();
-// $productss = json_decode($orders[0]['items_bought'], true);	//only have to decode 'items_bought'
 ?>
-
 
 <?php include("templates/header.php"); ?>
 
@@ -62,36 +57,4 @@ $orders = grabAllOrders();
 	<?php } ?>
 </div>
 
-<!-- Displaying all users -->
-<div class="user-list">
-	<?php foreach ($users as $user) { ?>
-		<div class="user">
-			<p>ID: <?php echo $user['id']; ?></p>
-			<p><?php echo $user['username']; ?></p>
-			<p><?php echo $user['email'] ?></p>
-			<p><?php echo $user['user_type'] ?></p>
-			<p><?php echo $user['created_at'] ?></p>
-			<!-- delete user -->
-			<a href="admin_home.php?delete_user=<?php echo $user['id']; ?>" onclick="return confirm('Pernamently remove this user?');">Delete</a>
-		</div>
-	<?php } ?>
-</div>
-
-<!-- Displaying placed orders -->
-<div class="user-list">
-	<?php foreach ($orders as $order) { ?>
-		<div class="user">
-			<p>order id: <?php echo $order['id']; ?></p>
-			<p>account id: <?php echo $order['account_id']; ?></p>
-			<p>total paid: <?php echo $order['total_paid']; ?>.00</p>
-			<a href="admin_home.php?cancel_order=<?php echo $order['id']; ?>" onclick="return confirm('Cancel this order?');">Cancel Order</a>
-		</div>
-	<?php } ?>
-</div>
-
 <?php include("templates/footer.php") ?>
-
-<?php
-// echo "<pre>" . print_r($orders, true) . "</pre>";
-// echo "<pre>" . print_r($products, true) . "</pre>";
-?>
