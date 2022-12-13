@@ -21,11 +21,10 @@ if (isset($_POST['add_cart'])) {
 			$added_product = array("product_id" => $product_id, "quantity" => $quantity);
 			$added_product = array_merge($added_product, grabProduct2($product_id));
 			$_SESSION['shopping_cart'][$product_id] = $added_product;
-	
+
 			$_SESSION['success']  = "New product successfully added!!";
 			echo json_encode('output null userr'); // for ajax
 		}
-
 	} else {
 		$product_id = $_POST['product_id'];
 		$quantity = $_POST['quantity'];
@@ -99,6 +98,18 @@ function deleteAllFromCart()
 	} else {
 		$_SESSION['shopping_cart'] = array();
 	}
+}
+
+if (isset($_POST['mailing_list'])) {
+	global $pdo;
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+
+	$query = "INSERT INTO mailing_list (name, email) VALUES(?,?)";
+	$stmt = $pdo->prepare($query);
+	$stmt->execute([$name,$email]);
+
+	echo json_encode('added to mailing list');
 }
 
 // upon logging in merges guest cart to logged in user

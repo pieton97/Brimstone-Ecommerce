@@ -51,7 +51,7 @@ $orders = grabAllOrders();
 			<a href="admin_home.php?delete=<?php echo $product['id'] . '&img_name=' . $product['img_name']; ?>" onclick="return confirm('Pernamently remove this product?');">Delete</a>
 
 			<!-- adds to cart -->
-			<form method="post" action="admin_home.php">
+			<form method="post" action="">
 				<input type="hidden" name="location" value="admin_home.php">
 				<input type="number" min="1" max="10" name="quantity" value="1">
 				<input type="hidden" name="user_id" value="<?php echo $_SESSION['user']['id']; ?>">

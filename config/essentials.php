@@ -152,3 +152,14 @@ function grabAllOrdersByID($id)
 
 	return $orders;
 };
+
+function grabMailingList()
+{
+	global $pdo;
+	$query = "SELECT * FROM mailing_list";
+	$stmt = $pdo->prepare($query);
+	$stmt->execute();
+	$mailingList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+	return $mailingList;
+}

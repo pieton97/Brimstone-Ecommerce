@@ -5,9 +5,8 @@ if (isAdmin() === false) {
 	header('location: ../pages/login.php');
 };
 include('config/functions.php');
-include('config/edit_cart.php');
 
-$orders = grabAllOrders();
+$mailingList = grabMailingList();
 
 ?>
 
@@ -24,14 +23,14 @@ $orders = grabAllOrders();
 
 <?php include("templates/admin-navbar.php"); ?>
 
-<!-- Displaying placed orders -->
+<!-- Displaying mailingList -->
 <div class="user-list">
-	<?php foreach ($orders as $order) { ?>
+	<?php foreach ($mailingList as $user) { ?>
 		<div class="user">
-			<p>order id: <?php echo $order['id']; ?></p>
-			<p>account id: <?php echo $order['account_id']; ?></p>
-			<p>total paid: <?php echo $order['total_paid']; ?>.00</p>
-			<a href="admin_home.php?cancel_order=<?php echo $order['id']; ?>" onclick="return confirm('Cancel this order?');">Cancel Order</a>
+			<p>id: <?php echo $user['id']; ?></p>
+			<p>name: <?php echo $user['name']; ?></p>
+			<p>email: <?php echo $user['email']; ?></p>
+			<p>joined date: <?php echo $user['created_at']; ?></p>
 		</div>
 	<?php } ?>
 </div>

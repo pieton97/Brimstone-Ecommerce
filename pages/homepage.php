@@ -43,10 +43,11 @@ $products = grabAllProducts();
 
 <div>
 	<h3 style="text-align: center;">Sign up for discounts:</h3>
-	<form action="" method="POST">
-		<input type="text" name="name" placeholder="Enter your name...">
-		<input type="email" name="email" placeholder="Enter your email...">
-		<button type="submit" name="mailing_list">Sign up</button>
+	<form method="POST" onsubmit="return addMailingList(this)">
+		<input type="text" name="name" placeholder="Enter your name..." required>
+		<input type="email" name="email" placeholder="Enter your email..." required>
+		<input type="submit" name="mailing_list" value="Sign up"></input>
+		<p name='message' style="display: none;">Thank you for signing up with us!</p>
 	</form>
 </div>
 

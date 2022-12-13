@@ -33,3 +33,36 @@ const test123 = (form) => {
   ajax.send(sendData);
   return false;
 };
+
+const addMailingList = (form) => {
+  let name = form.name.value;
+  let email = form.email.value;
+  let mailing_list = form.mailing_list.value;
+
+  let ajax = new XMLHttpRequest();
+  ajax.open("POST", "../config/edit_cart.php", true);
+  ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+  ajax.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      let response = JSON.parse(ajax.responseText);
+      console.log("response from php: ", response);
+
+      form.name.value = "";
+      form.name.disabled = true;
+      form.email.value = "";
+      form.email.disabled = true;
+      form.mailing_list.value = "Signed Up";
+      form.mailing_list.disabled = true;
+      form.querySelector("p").style.display = "block";
+
+      console.log("ajax success");
+    } else {
+      console.log("failed ajaxs");
+    }
+  };
+
+  let sendData = `name=${name}&email=${email}&mailing_list=${mailing_list}`;
+  ajax.send(sendData);
+  return false;
+};

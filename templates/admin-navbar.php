@@ -5,7 +5,8 @@
 		'home' 					=> array('name' => 'Home', 'path' => '/brimstone/admin/admin_home.php'),
 		'products' 			=> array('name' => 'Products', 'path' => '/brimstone/admin/admin_products.php'),
 		'users'					=> array('name' => 'Users', 'path' => '/brimstone/admin/admin_users.php'),
-		'placed orders'	=> array('name' => 'Orders', 'path' => '/brimstone/admin/admin_orders.php'),
+		'placed_orders'	=> array('name' => 'Orders', 'path' => '/brimstone/admin/admin_orders.php'),
+		'mailing_list'	=> array('name' => 'Mailing', 'path' => '/brimstone/admin/admin_mailing_list.php'),
 	);
 
 	foreach ($navbar as $tabName => $tab) {

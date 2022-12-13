@@ -4,10 +4,7 @@ if (isAdmin() === false) {
 	$_SESSION['msg'] = "You must log in first";
 	header('location: ../pages/login.php');
 };
-
 include('config/functions.php');
-include('config/edit_cart.php');
-include('config/edit_product.php');
 
 $users = grabAllUsers();
 ?>
