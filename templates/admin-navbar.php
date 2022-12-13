@@ -2,11 +2,11 @@
 	<?php
 	$activePage = basename($_SERVER['PHP_SELF'], ".php");
 	$navbar = array(
-		'home' 					=> array('name' => 'Home', 'path' => '/brimstone/admin/admin_home.php'),
-		'products' 			=> array('name' => 'Products', 'path' => '/brimstone/admin/admin_products.php'),
-		'users'					=> array('name' => 'Users', 'path' => '/brimstone/admin/admin_users.php'),
-		'placed_orders'	=> array('name' => 'Orders', 'path' => '/brimstone/admin/admin_orders.php'),
-		'mailing_list'	=> array('name' => 'Mailing', 'path' => '/brimstone/admin/admin_mailing_list.php'),
+		'admin_home' 					=> array('name' => 'Home', 'path' => '/brimstone/admin/admin_home.php'),
+		'admin_products' 			=> array('name' => 'Products', 'path' => '/brimstone/admin/admin_products.php'),
+		'admin_users'					=> array('name' => 'Users', 'path' => '/brimstone/admin/admin_users.php'),
+		'admin_orders'	=> array('name' => 'Orders', 'path' => '/brimstone/admin/admin_orders.php'),
+		'admin_mailing_list'	=> array('name' => 'Mailing', 'path' => '/brimstone/admin/admin_mailing_list.php'),
 	);
 
 	foreach ($navbar as $tabName => $tab) {
