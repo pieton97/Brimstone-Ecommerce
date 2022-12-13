@@ -2,7 +2,7 @@ let loc = window.location.pathname;
 console.log(loc);
 console.log(window.location.href);
 
-const test123 = (form) => {
+const addCart = (form) => {
   let quantity = form.quantity.value;
   let user_id = form.user_id.value;
   let product_id = form.product_id.value;

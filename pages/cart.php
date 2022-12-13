@@ -11,6 +11,8 @@ if (isLoggedIn()) {
 }
 $total_price = calcTotalPrice($_SESSION['shopping_cart']);
 
+$foo = "105.227";
+echo formatPrice($foo);
 ?>
 
 
@@ -65,8 +67,8 @@ if (count($_SESSION["shopping_cart"]) > 0) :
 							</select>
 						</form>
 					</td>
-					<td><?php echo "$" . $product["price"]; ?></td>
-					<td><?php echo "$" . $product["price"] * $product["quantity"] . ".00"; ?></td>
+					<td><?php echo "$" . formatPrice($product["price"]); ?></td>
+					<td><?php echo "$" . formatPrice($product["price"] * $product["quantity"]); ?></td>
 
 					<?php if (isLoggedIn()) { ?>
 						<td><a href="cart.php?delete_from_cart=<?php echo $product["cart_id"]; ?>">Delete</a></td>
@@ -82,7 +84,7 @@ if (count($_SESSION["shopping_cart"]) > 0) :
 				<td></td>
 				<td>TOTAL:</td>
 				<td>
-					<strong><?php echo "$" . $total_price . ".00"; ?></strong>
+					<strong><?php echo "$" . $total_price; ?></strong>
 				</td>
 				<td><a href="checkout.php?">Checkout</a></td>
 			</tr>

@@ -142,6 +142,11 @@ function grabAllUsers()
 	return $users;
 }
 
+function formatPrice($price)
+{
+	return number_format((float)$price, 2, '.', '');
+}
+
 function grabAllOrdersByID($id)
 {
 	global $pdo;

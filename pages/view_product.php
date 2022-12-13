@@ -18,7 +18,7 @@ if (isset($_GET['product'])) {
 	<div>
 		<p><?php echo $product['title']; ?></p>
 		<img class="product-img" src="../product_images/<?php echo $product['img_name'] ?>" alt="">
-		<p>$<?php echo $product['price'] ?></p>
+		<p>$<?php echo formatPrice($product['price']) ?></p>
 		<p><?php echo $product['description'] ?></p>
 
 		<!-- adds to cart -->

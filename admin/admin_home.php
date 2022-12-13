@@ -41,7 +41,7 @@ $orders = grabAllOrders();
 		<div class="product">
 			<p><?php echo $product['title']; ?></p>
 			<img class="product-img" src="../product_images/<?php echo $product['img_name'] ?>" alt="">
-			<p>$<?php echo $product['price'] ?></p>
+			<p>$<?php echo formatPrice($product['price']) ?></p>
 			<p><?php echo $product['category'] . "<br>" . $product['subcategory'] ?></p>
 
 			<!-- update product info -->
@@ -83,7 +83,7 @@ $orders = grabAllOrders();
 		<div class="user">
 			<p>order id: <?php echo $order['id']; ?></p>
 			<p>account id: <?php echo $order['account_id']; ?></p>
-			<p>total paid: <?php echo $order['total_paid']; ?>.00</p>
+			<p>total paid: <?php echo formatPrice($order['total_paid']); ?></p>
 			<a href="admin_home.php?cancel_order=<?php echo $order['id']; ?>" onclick="return confirm('Cancel this order?');">Cancel Order</a>
 		</div>
 	<?php } ?>

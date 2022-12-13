@@ -3,13 +3,13 @@
 
 <head>
 	<title>Milk Treats</title>
-	<link rel="shortcut icon" type="image/jpg" href="../images/cookieslogo.png"/>
+	<link rel="shortcut icon" type="image/jpg" href="../images/cookieslogo.png" />
 
 	<!-- <link rel="icon" href="../images/cookieslogo.png"> -->
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	
+
 	<link rel="stylesheet" type="text/css" href="../styles/style.css?v=<?php echo time(); ?>">
 
 	<?php if (isAdmin()) : ?>
@@ -44,5 +44,6 @@
 				<li><a href="../admin/admin_home.php">Admin home</a></li>
 			<?php endif ?>
 		</ul>
-
 	</nav>
+
+	<main>

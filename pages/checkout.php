@@ -42,8 +42,8 @@ $total_price = calcTotalPrice($_SESSION['shopping_cart']);
 					</td>
 					<td><?php echo $product["title"]; ?></td>
 					<td><?php echo $product["quantity"] ?></td>
-					<td><?php echo "$" . $product["price"]; ?></td>
-					<td><?php echo "$" . $product["price"] * $product["quantity"] . ".00"; ?></td>
+					<td><?php echo "$" . formatPrice($product["price"]); ?></td>
+					<td><?php echo "$" . formatPrice($product["price"] * $product["quantity"]); ?></td>
 					<td><a href="cart.php?delete_from_cart=<?php echo $product["cart_id"]; ?>">Delete</a></td>
 				</tr>
 			<?php } ?>
@@ -53,7 +53,7 @@ $total_price = calcTotalPrice($_SESSION['shopping_cart']);
 				<td></td>
 				<td>TOTAL:</td>
 				<td>
-					<strong><?php echo "$" . $total_price . ".00"; ?></strong>
+					<strong><?php echo "$" . formatPrice($total_price); ?></strong>
 				</td>
 				<td></td>
 			</tr>

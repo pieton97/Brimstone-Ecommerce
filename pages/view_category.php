@@ -23,7 +23,7 @@ if (isset($_GET['subcategory'])) {
 		<div class="product">
 			<p><?php echo $watch['title']; ?></p>
 			<img class="product-img" src="../product_images/<?php echo $watch['img_name'] ?>" alt="">
-			<p>$<?php echo $watch['price'] ?></p>
+			<p>$<?php echo formatPrice($watch['price']) ?></p>
 			<a href="view_product.php?product=<?php echo $watch['id'] ?>">View product</a>
 
 			<!-- adds to cart -->
@@ -35,7 +35,7 @@ if (isset($_GET['subcategory'])) {
 			</form>
 
 			<!-- adds to cart, ajax style -->
-			<form method="POST" onsubmit="return test123(this);">
+			<form method="POST" onsubmit="return addCart(this);">
 				<input type="hidden" name="quantity" value="1">
 				<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 				<input type="hidden" name="product_id" value="<?php echo $watch['id']; ?>">

@@ -32,7 +32,7 @@ $orders = grabAllOrdersByID($user_id);
 		<div class="user">
 			<p><?php echo $order['fname'] . ' ' . $order['lname']; ?></p>
 			<p><?php echo $order['address']; ?></p>
-			<p>total paid: <?php echo $order['total_paid']; ?>.00</p>
+			<p>total paid: <?php echo formatPrice($order['total_paid']); ?></p>
 			<a href="my_account.php?cancel_order=<?php echo $order['id']; ?>" onclick="return confirm('Cancel this order?');">Cancel Order</a>
 		</div>
 	<?php } ?>

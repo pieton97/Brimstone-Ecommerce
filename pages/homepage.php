@@ -19,19 +19,19 @@ $products = grabAllProducts();
 		<div class="product">
 			<p><?php echo $product['title']; ?></p>
 			<img class="product-img" src="../product_images/<?php echo $product['img_name'] ?>" alt="">
-			<p>$<?php echo $product['price'] ?></p>
+			<p>$<?php echo formatPrice($product['price']) ?></p>
 			<a href="view_product.php?product=<?php echo $product['id'] ?>">View product</a>
 
 			<!-- adds to cart -->
-			<form method="post" action="homepage.php">
+			<!-- <form method="post" action="homepage.php">
 				<input type="hidden" name="quantity" value="1">
 				<input type="hidden" name="user_id" value="<?php echo $user_id ?>">
 				<input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
 				<input type="submit" name="add_cart" value="add-to-cart" class="btn brand z-depth-0">
-			</form>
+			</form> -->
 
 			<!-- adds to cart, ajax style -->
-			<form method="POST" onsubmit="return test123(this);">
+			<form method="POST" onsubmit="return addCart(this);">
 				<input type="hidden" name="quantity" value="1">
 				<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
 				<input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
