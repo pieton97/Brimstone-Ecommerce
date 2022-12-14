@@ -1,53 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,400&display=swap");
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-	margin: 0px;
+  margin: 0px;
   padding: 0px;
 }
-
 @media (prefers-reduced-motion: no-preference) {
   * {
     scroll-behavior: smooth;
   }
 }
-
 :root {
-  --main-color: #f9f6ee;
+  --main-color: #f5f5dc;
   --second-color: #121212;
+  /* --accent-color: #00b7fc; */
+  --accent-color: #d1e0c4;
+
+  --soft-accent: #d1e0c4;
+  --darker-accent: #a68c6e;
+  --action: #e94c8c;
 }
 
-.dark-theme {
-  --main-color: #121212;
-  --second-color: #f9f6ee;
-}
-
-/* general css */
+/* general css start */
 body {
-  padding: 40px;
   min-height: 100vh;
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
   background-color: var(--main-color);
   color: var(--second-color);
-  font-family: monospace, sans-serif, Arial;
+  font-family: "Poppins", sans-serif;
   transition: 0.3s;
 }
 
 main {
-	flex: 1;
+  flex: 1;
 }
 
 ul li {
   list-style: none;
 }
 
+.heading-container {
+	position: sticky;
+	top: 0;
+	z-index: 5;
+	background-color: inherit;
+}
 nav {
-	min-height: 50px;
+  /* background-color: var(--accent-color); */
+  /* border-bottom: 1px solid var(--second-color); */
+  min-height: 50px;
   display: flex;
   justify-content: space-between;
-	align-items: center;
-  margin: 20px 0;
+  align-items: center;
+  height: 100px;
+  padding: 0 30px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 0 10px 3px rgba(66, 66, 66, 0.545);
 }
 nav ul {
   display: flex;
@@ -56,13 +67,37 @@ nav ul {
 }
 
 footer {
-  margin: 20px 0;
-	min-height: 50px;
-	background-color: #dff0d8;
+  padding: 0 30px;
+  min-height: 300px;
+  background-color: var(--accent-color);
 }
 
+.sale-banner {
+  background-color: var(--second-color);
+  color: var(--main-color);
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+}
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
+/* general css end */
+
+/* homepage start */
+
+.home-hero {
+  display: block;
+  margin: 40px auto;
+	max-height: 600px;
+	/* width: 100%; */
+	object-fit: cover;
+	object-position: center;
+}
 
 .header {
   width: 40%;
@@ -195,8 +230,5 @@ textarea {
 
 .active {
   color: green;
-}
-
-a {
-  color: inherit;
+	text-decoration: underline;
 }

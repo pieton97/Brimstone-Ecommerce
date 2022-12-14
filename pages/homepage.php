@@ -9,8 +9,14 @@ $products = grabAllProducts();
 
 <!-- notification message -->
 <?php include('templates/notifications.php'); ?>
-
-<img style="display: block; margin: 20px auto;" src="../images/dddd.jpg" width="100%" alt="">
+<div>
+	<img class="home-hero" src="../images/home-hero.jpg" alt="">
+	<div>
+		<p>title</p>
+		<p>description...</p>
+		<button>View All</button>
+	</div>
+</div>
 <h1 style="text-align: center;">hello there this is the homepage</h1>
 
 <!-- Displaying products -->
@@ -42,13 +48,12 @@ $products = grabAllProducts();
 </div>
 
 <div>
-	<h3 style="text-align: center;">Sign up for discounts:</h3>
-	<form method="POST" onsubmit="return addMailingList(this)">
-		<input type="text" name="name" placeholder="Enter your name..." required>
-		<input type="email" name="email" placeholder="Enter your email..." required>
-		<input type="submit" name="mailing_list" value="Sign up"></input>
-		<p name='message' style="display: none;">Thank you for signing up with us!</p>
-	</form>
+	<div class="gif-container">
+		<img class="gif-delivery" src="../images/delivery-box.webp" alt="">
+	</div>
+	<p>We Deliver To You</p>
+	<p>The only thing better than opening a gift…is opening a gift that’s dessert. Send over-the-top holiday treats from NYC’s #1 bakery. Nationwide delivery in 1-2 days.</p>
+	<button>Order Now</button>
 </div>
 
 <?php include("templates/footer.php") ?>

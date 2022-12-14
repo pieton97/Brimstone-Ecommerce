@@ -33,22 +33,21 @@ if (isAdmin() === false) {
 	<div class="input-group">
 		<label>Category</label>
 		<select name="category">
-			<option value=""></option>
-			<option value="watch">watch</option>
-			<option value="bracelet">bracelet</option>
-			<option value="cake">cake</option>
-			<option value="pies">pies</option>
-			<option value="cookies">cookies</option>
-			<option value="ice-cream">ice cream</option>
+			<option value="none">None</option>
+			<option value="cookies">Cookies</option>
+			<option value="cake">Cake</option>
+			<option value="ice-cream">Ice cream</option>
+			<option value="mochi">Mochi</option>
+			<!-- <option value="cookbooks">Cookbooks</option> -->
 		</select>
 	</div>
 	<div class="input-group">
 		<label>Subcategory</label>
 		<select name="subcategory">
-			<option value="none">none</option>
-			<option value="male">male</option>
-			<option value="female">female</option>
-			<option value="holiday">holiday</option>
+			<option value="none">None</option>
+			<option value="gifts">Gifts</option>
+			<option value="featured">Featured</option>
+			<option value="others">Others</option>
 		</select>
 	</div>
 	<div class="input-group">
@@ -63,7 +62,7 @@ if (isAdmin() === false) {
 		<button type="submit" class="btn" name="add_product_btn">Add product</button>
 	</div>
 	<p>
-		<a href="admin_home.php">Cancel</a>
+		<a href="admin_products.php">Cancel</a>
 	</p>
 </form>
 

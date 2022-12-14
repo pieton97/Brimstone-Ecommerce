@@ -2,6 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
 	session_start();
 }
+require('db_connect.php');
 
 // echo getcwd() . "<br>";
 chdir('C://xampp/htdocs/brimstone');
@@ -157,6 +158,22 @@ function grabAllOrdersByID($id)
 
 	return $orders;
 };
+
+
+if (isset($_POST['mailing_list'])) {
+	if (!isset($pdo)) {
+		$pdo = pdo_connect_mysql();
+	}
+	// global $pdo;
+	$name = $_POST['name'];
+	$email = $_POST['email'];
+
+	$query = "INSERT INTO mailing_list (name, email) VALUES(?,?)";
+	$stmt = $pdo->prepare($query);
+	$stmt->execute([$name, $email]);
+
+	echo json_encode('added to mailing list');
+}
 
 function grabMailingList()
 {

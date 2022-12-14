@@ -9,11 +9,12 @@ include('config/functions.php');
 include('config/edit_cart.php');
 include('config/edit_product.php');
 
-$products = grabAllProducts();
-// $products = array_slice($products, 0, 5);
-$cart = grabUserCart();
-$users = grabAllUsers();
-$orders = grabAllOrders();
+// $products = grabAllProducts();
+$products = array_slice(grabAllProducts(), 0, 5);
+// $users = grabAllUsers();
+$users = array_slice(grabAllUsers(), 0, 5);
+// $orders = grabAllOrders();
+$orders = array_slice(grabAllOrders(), 0, 5);
 // $productss = json_decode($orders[0]['items_bought'], true);	//only have to decode 'items_bought'
 ?>
 
@@ -46,18 +47,8 @@ $orders = grabAllOrders();
 
 			<!-- update product info -->
 			<a href="edit_product_form.php?update=<?php echo $product['id']; ?>">Update</a>
-
 			<!-- delete product -->
 			<a href="admin_home.php?delete=<?php echo $product['id'] . '&img_name=' . $product['img_name']; ?>" onclick="return confirm('Pernamently remove this product?');">Delete</a>
-
-			<!-- adds to cart -->
-			<form method="post" action="">
-				<input type="hidden" name="location" value="admin_home.php">
-				<input type="number" min="1" max="10" name="quantity" value="1">
-				<input type="hidden" name="user_id" value="<?php echo $_SESSION['user']['id']; ?>">
-				<input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-				<input type="submit" name="add_cart" value="add to cart" class="btn brand z-depth-0">
-			</form>
 		</div>
 	<?php } ?>
 </div>

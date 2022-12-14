@@ -65,7 +65,7 @@ function addProduct()
 		move_uploaded_file($_FILES['product_img']['tmp_name'], $uploadDir);
 
 		$_SESSION['success']  = "New product successfully added";
-		header('location: ../admin/admin_home.php');
+		header('location: ../admin/admin_products.php');
 	} else if (count($errors) == 0 && isset($_POST['edit_product_btn'])) {
 		// update existing product info
 		$img_name  = $_POST['img_name'];
@@ -78,7 +78,7 @@ function addProduct()
 		$stmt->execute([$title, $img_name, $category, $subcategory, $description, $price, $update_id]);
 
 		$_SESSION['success']  = "Product edit successful";
-		header('location: ../admin/admin_home.php');
+		header('location: ../admin/admin_products.php');
 	}
 }
 
@@ -97,7 +97,7 @@ function deleteProduct()
 		$stmt->execute([$id_to_delete]);
 		debug_to_console(getcwd());
 		unlink(getcwd() . './product_images/' . $img_file_name);
-		header('Location: ../admin/admin_home.php');
+		header('Location: ../admin/admin_products.php');
 	} catch (PDOException $e) {
 		echo $sql . "<br>" . $e->getMessage();
 	}

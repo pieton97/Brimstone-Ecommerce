@@ -40,7 +40,7 @@ const addMailingList = (form) => {
   let mailing_list = form.mailing_list.value;
 
   let ajax = new XMLHttpRequest();
-  ajax.open("POST", "../config/edit_cart.php", true);
+  ajax.open("POST", "../config/essentials.php", true);
   ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
   ajax.onreadystatechange = function () {

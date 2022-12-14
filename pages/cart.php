@@ -10,9 +10,6 @@ if (isLoggedIn()) {
 	}
 }
 $total_price = calcTotalPrice($_SESSION['shopping_cart']);
-
-$foo = "105.227";
-echo formatPrice($foo);
 ?>
 
 
@@ -64,6 +61,9 @@ if (count($_SESSION["shopping_cart"]) > 0) :
 								<option <?php if ($product["quantity"] == 3) echo "selected"; ?> value="3">3</option>
 								<option <?php if ($product["quantity"] == 4) echo "selected"; ?> value="4">4</option>
 								<option <?php if ($product["quantity"] == 5) echo "selected"; ?> value="5">5</option>
+								<?php if ($product["quantity"] > 5) : ?>
+									<option <?php if ($product["quantity"] > 5) echo "selected"; ?> value="<?php echo $product["quantity"] ?>"><?php echo $product["quantity"] ?></option>
+								<?php endif; ?>
 							</select>
 						</form>
 					</td>
@@ -84,7 +84,7 @@ if (count($_SESSION["shopping_cart"]) > 0) :
 				<td></td>
 				<td>TOTAL:</td>
 				<td>
-					<strong><?php echo "$" . $total_price; ?></strong>
+					<strong><?php echo "$" . formatPrice($total_price); ?></strong>
 				</td>
 				<td><a href="checkout.php?">Checkout</a></td>
 			</tr>

@@ -17,33 +17,40 @@
 	<?php endif ?>
 
 	<script src="../scripts/test.js" defer></script>
+	<script src="../scripts/populateData.js" defer></script>
 </head>
 
 <body>
+	<div class="heading-container">
+		<p class="sale-banner">ENJOY FREE STANDARD SHIPPING WHEN YOU ORDER NOW DURING THIS HOLIDAY!</p>
 
-	<nav>
-		<a href="../pages/homepage.php">Milk Treats</a>
-		<ul>
-			<li><a href="../pages/view_category.php?category=watch">Watches</a></li>
-			<li><a href="../pages/view_category.php?category=cookies">Cookies</a></li>
-			|
-			<li><a href="../pages/view_category.php?subcategory=male">Men</a></li>
-			<li><a href="../pages/view_category.php?subcategory=female">Women</a></li>
-			<li><a href="../pages/view_category.php?subcategory=none">none</a></li>
-		</ul>
-		<ul>
-			<li><a href="../pages/cart.php">Cart</a></li>
+		<nav>
+			<a href="../pages/homepage.php">Milk Treats</a>
+			<ul>
+				<li><a href="../pages/view_category.php?category=cookies">Cookies</a></li>
+				<li><a href="../pages/view_category.php?category=cake">Cake</a></li>
+				<li><a href="../pages/view_category.php?category=ice-cream">Ice Cream</a></li>
+				<li><a href="../pages/view_category.php?category=mochi">Mochi</a></li>
+				<!-- <li><a href="../pages/view_category.php?category=cookbooks">Cookbooks</a></li> -->
+				|
+				<li><a href="../pages/view_category.php?subcategory=gifts">Gifts</a></li>
+				<li><a href="../pages/view_category.php?subcategory=featured">Featured</a></li>
+				<!-- <li><a href="../pages/view_category.php?subcategory=others">others</a></li> -->
+			</ul>
+			<ul>
+				<li><a href="../pages/cart.php">Cart</a></li>
 
-			<?php if (isLoggedIn()) : ?>
-				<li><a href="../pages/my_account.php">My Account</a></li>
-			<?php else : ?>
-				<li><a href="../pages/login.php">Login</a></li>
-			<?php endif; ?>
+				<?php if (isLoggedIn()) : ?>
+					<li><a href="../pages/my_account.php">My Account</a></li>
+				<?php else : ?>
+					<li><a href="../pages/login.php">Login</a></li>
+				<?php endif; ?>
 
-			<?php if (isAdmin()) : ?>
-				<li><a href="../admin/admin_home.php">Admin home</a></li>
-			<?php endif ?>
-		</ul>
-	</nav>
+				<?php if (isAdmin()) : ?>
+					<li><a href="../admin/admin_home.php">Admin home</a></li>
+				<?php endif ?>
+			</ul>
+		</nav>
+	</div>
 
 	<main>

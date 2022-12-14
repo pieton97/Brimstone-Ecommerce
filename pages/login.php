@@ -16,11 +16,11 @@ include('config/functions.php');
 
 	<div class="input-group">
 		<label>Username</label>
-		<input type="text" name="username">
+		<input id="login-name" type="text" name="username">
 	</div>
 	<div class="input-group">
 		<label>Password</label>
-		<input type="password" name="password">
+		<input id="login-password" type="password" name="password">
 	</div>
 	<div class="input-group">
 		<button type="submit" class="btn" name="login_btn">Login</button>
@@ -29,7 +29,10 @@ include('config/functions.php');
 		Not yet a member? <a href="register.php">Sign up</a>
 	</p>
 </form>
-
+<p>admin login click here:</p>
+<button onclick="loginAdmin()">populate for admin</button>
+<p>user login click here:</p>
+<button onclick="loginUser()">populate for user</button>
 <?php include("templates/footer.php") ?>
 
 <?php

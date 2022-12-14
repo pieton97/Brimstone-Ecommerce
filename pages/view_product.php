@@ -29,6 +29,14 @@ if (isset($_GET['product'])) {
 			<input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
 			<input type="submit" name="add_cart" value="add to cart" class="btn brand z-depth-0">
 		</form>
+
+		<!-- adds to cart, ajax style -->
+		<form method="POST" onsubmit="return addCart(this);">
+				<input type="hidden" name="quantity" value="1">
+				<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+				<input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+				<input type="submit" name="add_cart" value="add-to-cart">
+			</form>
 	</div>
 </div>
 

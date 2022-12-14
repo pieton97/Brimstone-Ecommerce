@@ -48,22 +48,22 @@ if (isset($_GET['update'])) {
 		<label>Category</label>
 		<select name="category">
 			<option value="<?php echo $category; ?>"><?php echo $category; ?> (current)</option>
-			<option value="watch">watch</option>
-			<option value="bracelet">bracelet</option>
-			<option value="cake">cake</option>
-			<option value="pies">pies</option>
-			<option value="cookies">cookies</option>
-			<option value="ice-cream">ice cream</option>
+			<option value="none">None</option>
+			<option value="cookies">Cookies</option>
+			<option value="cake">Cake</option>
+			<option value="ice-cream">Ice cream</option>
+			<option value="mochi">Mochi</option>
+			<!-- <option value="cookbooks">Cookbooks</option> -->
 		</select>
 	</div>
 	<div class="input-group">
 		<label>Subcategory</label>
 		<select name="subcategory">
 			<option value="<?php echo $subcategory; ?>"><?php echo $subcategory; ?> (current)</option>
-			<option value="none">none</option>
-			<option value="male">male</option>
-			<option value="female">female</option>
-			<option value="holiday">holiday</option>
+			<option value="none">None</option>
+			<option value="gifts">Gifts</option>
+			<option value="featured">Featured</option>
+			<option value="others">Others</option>
 		</select>
 	</div>
 	<div class="input-group">
@@ -79,7 +79,7 @@ if (isset($_GET['update'])) {
 	</div>
 	<input type="hidden" name="update_id" value="<?php echo $update_id; ?>">
 	<p>
-		<a href="admin_home.php">Cancel</a>
+		<a href="admin_products.php">Cancel</a>
 	</p>
 </form>
 
