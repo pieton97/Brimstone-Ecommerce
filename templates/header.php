@@ -3,7 +3,7 @@
 
 <head>
 	<title>Milk Treats</title>
-	<link rel="shortcut icon" type="image/jpg" href="../images/cookieslogo.png" />
+	<link rel="shortcut icon" type="image/jpg" href="../images/cookielogo.jpg" />
 
 	<!-- <link rel="icon" href="../images/cookieslogo.png"> -->
 	<meta charset="UTF-8">
@@ -11,6 +11,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 	<link rel="stylesheet" type="text/css" href="../styles/style.css?v=<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="../styles/animations.css?v=<?php echo time(); ?>">
 
 	<?php if (isAdmin()) : ?>
 		<link rel="stylesheet" type="text/css" href="../styles/style2.css?v=<?php echo time(); ?>">
@@ -25,7 +26,10 @@
 		<p class="sale-banner">ENJOY FREE STANDARD SHIPPING WHEN YOU ORDER NOW DURING THIS HOLIDAY!</p>
 
 		<nav>
-			<a href="../pages/homepage.php">Milk Treats</a>
+			<div class="nav-logo-container">
+				<a href="../pages/homepage.php"><img src="../images/cookie-logo.png" alt=""></a>
+				<a href="../pages/homepage.php"><p>Milk Treats</p></a>
+			</div>
 			<ul>
 				<li><a href="../pages/view_category.php?category=cookies">Cookies</a></li>
 				<li><a href="../pages/view_category.php?category=cake">Cake</a></li>
