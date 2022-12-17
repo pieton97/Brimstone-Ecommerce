@@ -10,11 +10,12 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" type="text/css" href="../styles/style.css?v=<?php echo time(); ?>">
-	<link rel="stylesheet" type="text/css" href="../styles/animations.css?v=<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="../styles/general.css?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="../styles/homepage.css?v=<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="../styles/footer.css?v=<?php echo time(); ?>">
 
 	<?php if (isAdmin()) : ?>
-		<link rel="stylesheet" type="text/css" href="../styles/style2.css?v=<?php echo time(); ?>">
+		<link rel="stylesheet" type="text/css" href="../styles/admin.css?v=<?php echo time(); ?>">
 	<?php endif ?>
 
 	<script src="../scripts/test.js" defer></script>

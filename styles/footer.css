@@ -1,0 +1,57 @@
+footer {
+  padding: 50px 0;
+  /* min-height: 300px; */
+  background-color: var(--accent-color);
+	font-size: 1.1rem;
+}
+footer p, footer a {
+	margin-bottom: 16px;
+}
+footer a:hover {
+	text-decoration: underline;
+}
+.footer-main {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+	margin-bottom: 20px;
+}
+footer .info {
+	border: none;
+	padding: 8px 12px;
+	background-color: inherit;
+	border-bottom: 1px solid var(--second-color);
+	border-radius: 2px;
+	font-size: 1.2rem;
+	margin-right: 8px;
+}
+footer .mail-btn {
+	padding: 10px 18px;
+	border: none;
+	border-radius: 5px;
+	font-size: 1.2rem;
+	background-color: var(--action);
+	color: var(--main-color);
+	cursor: pointer;
+	transition: all 0.3s;
+}
+footer .mail-btn:hover {
+	box-shadow: 0 3px 10px 3px rgba(0, 0, 0, 0.337);
+	background-color: var(--second-color);
+}
+footer .message {
+  display: none;
+  color: green;
+}
+footer .title {
+	font-size: 2.2rem;
+	font-weight: bold;
+}
+footer .about-links {
+  display: flex;
+  flex-direction: column;
+}
+footer .copyright {
+	text-align: center;
+	margin-top: 16px;
+}

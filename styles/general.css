@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,700;1,400&display=swap");
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  * {
+    scroll-behavior: smooth;
+  }
+}
+:root {
+  --main-color: #ecece8;
+  --second-color: #121212;
+  /* --accent-color: #00b7fc; */
+  --accent-color: #d1e0c4;
+
+  --soft-accent: #d1e0c4;
+  --darker-accent: #a89075;
+  --action: #e94c8c;
+  --action2: #9f6252;
+}
+
+/* general css start */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--main-color);
+  color: var(--second-color);
+  font-family: "Poppins", sans-serif;
+  transition: 0.3s;
+}
+
+main {
+  flex: 1;
+	min-width: 300px;
+}
+
+ul li {
+  list-style: none;
+}
+
+.sale-banner {
+  background-color: var(--second-color);
+  color: var(--main-color);
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* general css end */
