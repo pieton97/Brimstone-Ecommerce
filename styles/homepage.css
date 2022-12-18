@@ -358,7 +358,9 @@ form,
   clear: both;
 } */
 
-/* temporary tests */
+
+
+/* 
 table {
 	margin: 0 auto;
 }
@@ -400,9 +402,5 @@ textarea {
   font-size: 16px;
   border-radius: 5px;
   border: 1px solid gray;
-}
+} */
 
-.active {
-  color: green;
-	text-decoration: underline;
-}

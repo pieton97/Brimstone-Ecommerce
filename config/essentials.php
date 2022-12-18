@@ -66,11 +66,11 @@ function display_error()
 function grabAllProducts()
 {
 	global $pdo;
-	$query = "SELECT * FROM products";
+	$query = "SELECT * FROM products ORDER BY category ASC";
 	$stmt = $pdo->prepare($query);
 	$stmt->execute();
-	$watches = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	return $watches;
+	$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	return $products;
 }
 
 function grabProductsByCategory($category)

@@ -19,8 +19,9 @@
 
   --soft-accent: #d1e0c4;
   --darker-accent: #a89075;
-  --action: #e94c8c;
-  --action2: #9f6252;
+  --action: #9f6252;
+  --action23: #e94c8c;
+  --action2: #e94c8c;
 }
 
 /* general css start */
@@ -58,3 +59,7 @@ a {
 }
 
 /* general css end */
+.active {
+  color: green;
+	text-decoration: underline;
+}

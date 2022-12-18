@@ -14,7 +14,7 @@ $products = grabAllProducts();
 	<div class="description-wrapper">
 		<p class="title">SEND HOLIDAY MAGIC—STRAIGHT TO THEIR DOOR.</p>
 		<p>This holiday season, send bigger, bolder, and more chocolate-y gifts with our new limited edition Chocolate Mint Chip Cake and Cake Truffles, epic Peppermint Bark Tie Dye Pie, and classic Milk Bar Cookie Tins.</p>
-		<a class="action-btn" href="#">ORDER NOW</a>
+		<a class="action-btn" href="../pages/view_category.php?view_all=All">SHOP NOW</a>
 	</div>
 </div>
 
@@ -61,7 +61,7 @@ $products = grabAllProducts();
 			</a>
 		</div>
 	</div>
-	<a class="action-btn" href="#">SEE ALL OPTIONS</a>
+	<a class="action-btn" href="../pages/view_category.php?view_all=All">SEE ALL OPTIONS</a>
 </div>
 
 <div class="benefits-page-break">
@@ -89,7 +89,7 @@ $products = grabAllProducts();
 	<div class="gift-descr">
 		<p class="title">HAPPINESS DELIVERED</p>
 		<p>The only thing better than opening a gift…is opening a gift that’s dessert. Make somebody's day bright by sending our best-selling, over-the-top treats today. Nationwide delivery in 1-2 days.</p>
-		<a class="action-btn" href="#">ORDER NOW</a>
+		<a class="action-btn" href="../pages/view_category.php?view_all=All">SHOP NOW</a>
 	</div>
 	<div class="img-wrapper">
 		<img class="gift-delivery" src="../images/delivery-box.webp" alt="">

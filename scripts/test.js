@@ -20,7 +20,7 @@ const addCart = (form) => {
       let response = JSON.parse(ajax.responseText);
       console.log("response from php: ", response);
 
-      form.add_cart.value = "added";
+      form.add_cart.value = "Added";
       form.add_cart.disabled = true;
 
       console.log("ajax success");

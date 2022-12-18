@@ -14,29 +14,21 @@ if (isset($_GET['product'])) {
 <?php include('templates/notifications.php'); ?>
 
 <!-- Displaying products -->
-<div class="products-container">
-	<div>
-		<p><?php echo $product['title']; ?></p>
-		<img class="product-img" src="../product_images/<?php echo $product['img_name'] ?>" alt="">
-		<p>$<?php echo formatPrice($product['price']) ?></p>
+<div class="single-product-wrapper">
+	<img class="" src="../product_images/<?php echo $product['img_name'] ?>" alt="">
+	<div class="product-content">
+		<p class="title"><?php echo $product['title']; ?></p>
 		<p><?php echo $product['description'] ?></p>
-
-		<!-- adds to cart -->
-		<form method="post" action="view_product.php?product=<?php echo $product['id'] ?>">
-			<input type="hidden" name="location" value="view_product.php?product=<?php echo $product['id'] ?>">
-			<input type="hidden" name="quantity" value="1">
-			<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-			<input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-			<input type="submit" name="add_cart" value="add to cart" class="btn brand z-depth-0">
-		</form>
+		<p>Free shipping*</p>
+		<p class="pricing">$<?php echo formatPrice($product['price']) ?></p>
 
 		<!-- adds to cart, ajax style -->
 		<form method="POST" onsubmit="return addCart(this);">
-				<input type="hidden" name="quantity" value="1">
-				<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
-				<input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-				<input type="submit" name="add_cart" value="add-to-cart">
-			</form>
+			<input type="hidden" name="quantity" value="1">
+			<input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+			<input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
+			<input class="add-cart" type="submit" name="add_cart" value="Add to cart">
+		</form>
 	</div>
 </div>
 
