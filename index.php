@@ -1,3 +1,4 @@
 <?php
-	header('location: pages/homepage.php');
+	// header('location: pages/homepage.php');
+	echo 'testing';
 ?>
