@@ -15,89 +15,63 @@ $total_price = calcTotalPrice($_SESSION['shopping_cart']);
 
 <?php include("templates/header.php") ?>
 
-<div class="header">
-	<h2>My Cart</h2>
-</div>
-<div class="content">
-	<!-- notification message -->
-	<?php include('templates/notifications.php'); ?>
-
-	<!-- logged in user information -->
-	<?php include('templates/profile_info.php'); ?>
-</div>
-
 <?php
 if (count($_SESSION["shopping_cart"]) > 0) :
 ?>
-	<table class="table">
-		<tbody>
-			<tr>
-				<td></td>
-				<td>ITEM NAME</td>
-				<td>QUANTITY</td>
-				<td>UNIT PRICE</td>
-				<td>TOTAL</td>
-				<td><a href="cart.php?delete_all_cart=1" onclick="return confirm('Remove all?');">Remove all</a></td>
-			</tr>
-			<?php foreach ($_SESSION["shopping_cart"] as $product) { ?>
-				<tr>
-					<td>
-						<img class="product-img" src="../product_images/<?php echo $product["img_name"]; ?>" />
-					</td>
-					<td><?php echo $product["title"]; ?></td>
-					<td>
-						<form method='post' action='cart.php'>
-							<?php if (isLoggedIn()) { ?>
-								<input type="hidden" name="cart_id" value="<?php echo $product["cart_id"]; ?>" />
-							<?php } else { ?>
-								<input type="hidden" name="cart_id" value="<?php echo $product["product_id"]; ?>" />
-							<?php } ?>
+	<div class="cart-wrapper">
+		<p>My Cart</p>
+		<?php foreach ($_SESSION["shopping_cart"] as $product) { ?>
+			<div class="cart-product">
+				<img class="product-img" src="../product_images/<?php echo $product["img_name"]; ?>" />
+				<div class="product-details">
+					<div>
+						<p><?php echo $product["title"]; ?></td>
+						<p><?php echo "$" . formatPrice($product["price"]); ?></p>
+					</div>
 
+					<p>Qty: </p>
+					<form method='post' action='cart.php'>
+						<?php if (isLoggedIn()) { ?>
+							<input type="hidden" name="cart_id" value="<?php echo $product["cart_id"]; ?>" />
+						<?php } else { ?>
+							<input type="hidden" name="cart_id" value="<?php echo $product["product_id"]; ?>" />
+						<?php } ?>
 
-							<input type='hidden' name='update_cart' value="change" />
-							<select name='quantity' onChange="this.form.submit()">
-								<option <?php if ($product["quantity"] == 1) echo "selected"; ?> value="1">1</option>
-								<option <?php if ($product["quantity"] == 2) echo "selected"; ?> value="2">2</option>
-								<option <?php if ($product["quantity"] == 3) echo "selected"; ?> value="3">3</option>
-								<option <?php if ($product["quantity"] == 4) echo "selected"; ?> value="4">4</option>
-								<option <?php if ($product["quantity"] == 5) echo "selected"; ?> value="5">5</option>
-								<?php if ($product["quantity"] > 5) : ?>
-									<option <?php if ($product["quantity"] > 5) echo "selected"; ?> value="<?php echo $product["quantity"] ?>"><?php echo $product["quantity"] ?></option>
-								<?php endif; ?>
-							</select>
-						</form>
-					</td>
-					<td><?php echo "$" . formatPrice($product["price"]); ?></td>
-					<td><?php echo "$" . formatPrice($product["price"] * $product["quantity"]); ?></td>
+						<input type='hidden' name='update_cart' value="change" />
+						<select name='quantity' onChange="this.form.submit()">
+							<option <?php if ($product["quantity"] == 1) echo "selected"; ?> value="1">1</option>
+							<option <?php if ($product["quantity"] == 2) echo "selected"; ?> value="2">2</option>
+							<option <?php if ($product["quantity"] == 3) echo "selected"; ?> value="3">3</option>
+							<option <?php if ($product["quantity"] == 4) echo "selected"; ?> value="4">4</option>
+							<option <?php if ($product["quantity"] == 5) echo "selected"; ?> value="5">5</option>
+							<?php if ($product["quantity"] > 5) : ?>
+								<option <?php if ($product["quantity"] > 5) echo "selected"; ?> value="<?php echo $product["quantity"] ?>"><?php echo $product["quantity"] ?></option>
+							<?php endif; ?>
+						</select>
+					</form>
+					<p>Total: <?php echo "$" . formatPrice($product["price"] * $product["quantity"]); ?></p>
 
 					<?php if (isLoggedIn()) { ?>
-						<td><a href="cart.php?delete_from_cart=<?php echo $product["cart_id"]; ?>">Delete</a></td>
+						<a href="cart.php?delete_from_cart=<?php echo $product["cart_id"]; ?>">Delete</a>
 					<?php } else { ?>
-						<td><a href="cart.php?delete_from_cart=<?php echo $product["product_id"]; ?>">Delete</a></td>
+						<a href="cart.php?delete_from_cart=<?php echo $product["product_id"]; ?>">Delete</a>
 					<?php } ?>
-
-				</tr>
-			<?php } ?>
-			<tr>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>TOTAL:</td>
-				<td>
-					<strong><?php echo "$" . formatPrice($total_price); ?></strong>
-				</td>
-				<td><a href="checkout.php?">Checkout</a></td>
-			</tr>
-		</tbody>
-	</table>
-<?php
-else :
-?>
-	<h3>Your cart is empty!</h3>
-	<p>Try adding something to cart...</p>
-<?php
-	echo 'hhhhhh';
-endif;
-?>
+				</div>
+			</div>
+		<?php } ?>
+		<div class="cart-pricing">
+			<p>TOTAL:</p>
+			<p><?php echo "$" . formatPrice($total_price); ?></p>
+			<a href="cart.php?delete_all_cart=1" onclick="return confirm('Remove all?');">Remove all</a>
+			<a href="checkout.php?">Checkout</a>
+		</div>
+	</div>
+<?php else : ?>
+	<div>
+		<p>My Cart</p>
+		<h3>Your cart is empty!</h3>
+		<p>Try adding something to cart...</p>
+	</div>
+<?php endif; ?>
 
 <?php include("templates/footer.php") ?>

@@ -1,0 +1,142 @@
+/* user profile */
+.profile-main-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  justify-content: center;
+  margin: 30px auto;
+}
+.profile-main-wrapper a {
+	text-decoration: underline;
+}
+.profile-main-wrapper a:hover {
+  color: blue;
+}
+.profile-banner {
+  background-color: var(--main-color);
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.283);
+  gap: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 600px;
+  min-width: 400px;
+  max-height: 300px;
+  height: 100%;
+}
+.profile-banner .profile-title {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.profile-info {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+.profile-info img {
+  width: 100%;
+  max-width: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+.user-details {
+}
+
+/* products layout within admin home */
+.profile-content {
+	border-radius: 10px;
+  min-width: 800px;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.283);
+	padding: 30px;
+}
+
+.admin-product-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.admin-product-header {
+  display: flex;
+  gap: 10px;
+}
+.admin-products {
+  display: grid;
+  grid-template-columns: repeat(4, 230px);
+  gap: 30px;
+}
+.admin-product {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+	border-radius: 8px;
+	overflow: hidden;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.283);
+}
+.admin-product img {
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+.admin-product .admin-product-details {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+}
+.admin-product-details .title {
+	font-weight: bold;
+}
+.admin-product-details a {
+	margin-top: 5px;
+	width: 30px;
+	font-weight: bold;
+}
+
+.admin-user-details div {
+	margin-bottom: 10px;
+}
+.admin-user-details .title {
+	font-weight: bold;
+}
+
+/* navbar within admin home for different tabs */
+.admin-navbar {
+  display: flex;
+  gap: 10px;
+}
+.active {
+  color: rgb(0, 163, 0)
+}
+
+/* cart product layout */
+.cart-wrapper {
+	box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.305);
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 30px;
+	margin: 30px auto;
+	width: 70%;
+	min-width: 380px;
+	max-width: 1400px;
+}
+.cart-product {
+	display: flex;
+	gap: 30px;
+}
+.cart-product img {
+	width: 150px;
+	border-radius: 6px;
+	object-fit: cover;
+	object-position: center;
+}

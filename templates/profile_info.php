@@ -1,4 +1,4 @@
-<div class="profile_info">
+<div class="profile-info">
 	<?php if (isAdmin() === true) : ?>
 		<img src="../images/admin_profile.jpg">
 	<?php else : ?>
@@ -6,16 +6,11 @@
 	<?php endif; ?>
 
 
-	<div>
+	<div class="user-details">
 		<?php if (isset($_SESSION['user'])) : ?>
-			<strong><?php echo $_SESSION['user']['username']; ?></strong>
-
-			<small>
-				<i style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</i>
-				<br>
-				<a href="../pages/cart.php?logout='1'" style="color: red;">logout</a>
-			</small>
-
+			<p><?php echo $_SESSION['user']['username']; ?> <span style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</span></p>
+			<p><?php echo $_SESSION['user']['email']; ?></p>
+			<a href="../pages/cart.php?logout='1'" style="color: red;">logout</a>
 		<?php endif ?>
 	</div>
 </div>

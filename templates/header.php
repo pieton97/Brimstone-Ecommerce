@@ -14,6 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="../styles/homepage.css?v=<?php echo time(); ?>">
 	<link rel="stylesheet" type="text/css" href="../styles/footer.css?v=<?php echo time(); ?>">
 	<link rel="stylesheet" type="text/css" href="../styles/products.css?v=<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="../styles/users.css?v=<?php echo time(); ?>">
 
 	<?php if (isAdmin()) : ?>
 		<link rel="stylesheet" type="text/css" href="../styles/admin.css?v=<?php echo time(); ?>">

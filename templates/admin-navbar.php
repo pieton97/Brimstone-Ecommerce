@@ -1,4 +1,4 @@
-<ul class="admin-navbar" style="display: flex; gap: 10px;">
+<ul class="admin-navbar">
 	<?php
 	$activePage = basename($_SERVER['PHP_SELF'], ".php");
 	$navbar = array(
