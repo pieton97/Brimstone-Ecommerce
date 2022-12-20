@@ -3,7 +3,6 @@
 
 <head>
 	<title>Milk Treats</title>
-	<link rel="shortcut icon" type="image/jpg" href="../images/cookielogo.jpg" />
 
 	<!-- <link rel="icon" href="../images/cookieslogo.png"> -->
 	<meta charset="UTF-8">
