@@ -22,7 +22,6 @@ if (isset($_POST['add_cart'])) {
 			$added_product = array_merge($added_product, grabProduct2($product_id));
 			$_SESSION['shopping_cart'][$product_id] = $added_product;
 
-			$_SESSION['success']  = "New product successfully added!!";
 			echo json_encode('output null userr'); // for ajax
 		}
 	} else {
@@ -39,14 +38,10 @@ if (isset($_POST['add_cart'])) {
 			$query = "UPDATE cart SET quantity = ? WHERE id = ?";
 			$stmt = $pdo->prepare($query);
 			$stmt->execute([++$product['quantity'], $product['id']]);
-
-			$_SESSION['success']  = "Additional item added";
 		} else {
 			$query = "INSERT INTO cart(user_id, product_id, quantity) VALUES(?,?,?)";
 			$stmt = $pdo->prepare($query);
 			$stmt->execute([$user_id, $product_id, $quantity]);
-
-			$_SESSION['success']  = "New product successfully added!!";
 		}
 
 		echo json_encode('output logged in userr'); //for ajax response
@@ -63,7 +58,6 @@ if (isset($_POST['update_cart'])) {
 		$stmt = $pdo->prepare($query);
 		$stmt->execute([$updated_quantity, $update_id]);
 	}
-	$_SESSION['success']  = "Cart updated";
 };
 
 if (isset($_GET['delete_from_cart'])) {
@@ -80,12 +74,10 @@ if (isset($_GET['delete_from_cart'])) {
 			echo $sql . "<br>" . $e->getMessage();
 		};
 	}
-	$_SESSION['success']  = "Product removed";
 };
 
 if (isset($_GET['delete_all_cart'])) {
 	deleteAllFromCart();
-	$_SESSION['success']  = "All products removed";
 };
 function deleteAllFromCart()
 {
@@ -206,8 +198,6 @@ if (isset($_GET['cancel_order'])) {
 	} catch (PDOException $e) {
 		echo $sql . "<br>" . $e->getMessage();
 	};
-
-	$_SESSION['success']  = "Order Canceled";
 };
 
 // this is for ajax of guest cart

@@ -19,10 +19,6 @@ $count = count($products);
 
 <?php include("templates/header.php") ?>
 
-<!-- notification message -->
-<?php include('templates/notifications.php'); ?>
-
-<!-- Displaying products -->
 <div class="products-container">
 	<?php foreach ($products as $item) { ?>
 		<div class="product">

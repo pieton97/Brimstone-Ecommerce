@@ -49,7 +49,6 @@ function register()
 			$stmt = $pdo->prepare($query);
 			$stmt->execute([$username, $email, $user_type, $password]);
 
-			$_SESSION['success']  = "New user successfully created!!";
 			header('location: admin_home.php');
 		} else {
 			$query = "INSERT INTO users (username, email, user_type, password) 
@@ -66,7 +65,6 @@ function register()
 			}
 
 			$_SESSION['user'] = getUserById($logged_in_user_id); // put logged in user in session
-			$_SESSION['success']  = "You are now logged in";
 			header('location: ../pages/homepage.php');
 		}
 	}
@@ -120,11 +118,9 @@ function login()
 			$logged_in_user = $user;
 			if ($logged_in_user['user_type'] == 'admin') {
 				$_SESSION['user'] = $logged_in_user;
-				$_SESSION['success']  = "You are now logged in";
 				header('Location: ../admin/admin_home.php');
 			} else {
 				$_SESSION['user'] = $logged_in_user;
-				$_SESSION['success']  = "You are now logged in";
 				header('Location: ../pages/homepage.php');
 			}
 			// merges guest cart with user current cart
@@ -155,5 +151,4 @@ function deleteUser()
 	} catch (PDOException $e) {
 		echo $sql . "<br>" . $e->getMessage();
 	}
-	$_SESSION['success']  = "User removed";
 }

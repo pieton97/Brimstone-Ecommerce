@@ -17,10 +17,11 @@ $count = count($products);
 	<div class="profile-banner">
 		<div class="profile-title">
 			<p>Admin Home</p>
+			<hr>
 		</div>
 		<div>
-			<?php include('templates/notifications.php'); ?>
 			<?php include('templates/profile_info.php'); ?>
+			<a href="../admin/create_user.php">Create user</a>
 		</div>
 	</div>
 
@@ -29,6 +30,7 @@ $count = count($products);
 
 		<!-- Editing products -->
 		<div class="admin-product-wrapper">
+			<p class="secret-note">note: please dont delete too many products so I dont have to constantly restore the db, thanks! :)</p>
 			<div class="admin-product-header">
 				<p>Current products: (<?php echo $count ?> count) <a href="add_product_form.php">Add product</a></p>
 			</div>

@@ -2,7 +2,6 @@
 // connect to the database
 require_once('db_connect.php');
 $pdo = pdo_connect_mysql();
-// echo __DIR__;
 
 // variable declaration
 $title = "";
@@ -20,21 +19,15 @@ function addProduct()
 {
 	global $pdo, $title, $img_name, $category, $subcategory, $description, $price, $errors;
 
-	// receive all input values from the form.
 	$title        =  $_POST['title'];
-	// $img_name     =  $_POST['img_name'];
 	$category     =  $_POST['category'];
-	$subcategory    		=  $_POST['subcategory'];
+	$subcategory  =  $_POST['subcategory'];
 	$description  =  $_POST['description'];
 	$price        =  $_POST['price'];
-	echo "<pre>" . print_r($_FILES['product_img'], true) . "</pre>";
 
 	if (empty($title)) {
 		array_push($errors, "Title is required");
 	}
-	// if (empty($img_name)) {
-	// 	array_push($errors, "Img_name is required");
-	// }
 	if (empty($category)) {
 		array_push($errors, "Category is required");
 	}
@@ -64,7 +57,6 @@ function addProduct()
 		$uploadDir = __DIR__ . '/../product_images/' . basename($_FILES["product_img"]['name']);
 		move_uploaded_file($_FILES['product_img']['tmp_name'], $uploadDir);
 
-		$_SESSION['success']  = "New product successfully added";
 		header('location: ../admin/admin_products.php');
 	} else if (count($errors) == 0 && isset($_POST['edit_product_btn'])) {
 		// update existing product info
@@ -77,7 +69,6 @@ function addProduct()
 		$stmt = $pdo->prepare($query);
 		$stmt->execute([$title, $img_name, $category, $subcategory, $description, $price, $update_id]);
 
-		$_SESSION['success']  = "Product edit successful";
 		header('location: ../admin/admin_products.php');
 	}
 }
@@ -101,5 +92,4 @@ function deleteProduct()
 	} catch (PDOException $e) {
 		echo $sql . "<br>" . $e->getMessage();
 	}
-	$_SESSION['success']  = "Product removed";
 }

@@ -58,4 +58,7 @@ a {
   text-decoration: none;
 }
 
+.error {
+	color: red;
+}
 /* general css end */

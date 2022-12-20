@@ -27,16 +27,17 @@ $productss = json_decode($orders[0]['items_bought'], true);	//only have to decod
 	<div class="profile-banner">
 		<div class="profile-title">
 			<p>Admin Home</p>
+			<hr>
 		</div>
 		<div>
-			<?php include('templates/notifications.php'); ?>
 			<?php include('templates/profile_info.php'); ?>
+			<a href="../admin/create_user.php">Create user</a>
 		</div>
 	</div>
 
 	<div class="profile-content">
 		<?php include("templates/admin-navbar.php"); ?>
-
+		<a href="../admin/create_user.php">Create user</a>
 		<!-- Displaying all users -->
 		<div class="admin-user-details">
 			<?php foreach ($users as $user) { ?>

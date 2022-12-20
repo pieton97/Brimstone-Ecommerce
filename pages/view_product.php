@@ -9,11 +9,6 @@ if (isset($_GET['product'])) {
 ?>
 
 <?php include("templates/header.php") ?>
-
-<!-- notification message -->
-<?php include('templates/notifications.php'); ?>
-
-<!-- Displaying products -->
 <div class="single-product-wrapper">
 	<img class="" src="../product_images/<?php echo $product['img_name'] ?>" alt="">
 	<div class="product-content">

@@ -7,36 +7,31 @@ include('config/functions.php');
 
 <?php include("templates/header.php") ?>
 
-<div class="header">
-	<h2>Login</h2>
+<div class="form-wrapper">
+	<div class="header">
+		<h2>Login</h2>
+	</div>
+	<div class="error" onclick="this.remove()"><?php echo display_error(); ?></div>
+
+	<form class="product-form" method="post" action="login.php">
+		<div>
+			<label>Username</label>
+			<input id="login-name" type="text" name="username">
+		</div>
+		<div>
+			<label>Password</label>
+			<input id="login-password" type="password" name="password">
+		</div>
+		<div>
+			<button type="submit" name="login_btn">Login</button>
+		</div>
+		<p>Not yet a member? <a class="form-link" href="register.php">Sign up</a></p>
+		<div>
+			<p>Demo accounts:</p>
+			<p class="form-link" onclick="loginAdmin()">Populate for admin</p>
+			<p class="form-link" onclick="loginUser()">Populate for user</p>
+		</div>
+	</form>
 </div>
-<form method="post" action="login.php">
-	<!-- notification message -->
-	<?php include('templates/notifications.php'); ?>
 
-	<div class="input-group">
-		<label>Username</label>
-		<input id="login-name" type="text" name="username">
-	</div>
-	<div class="input-group">
-		<label>Password</label>
-		<input id="login-password" type="password" name="password">
-	</div>
-	<div class="input-group">
-		<button type="submit" class="btn" name="login_btn">Login</button>
-	</div>
-	<p>
-		Not yet a member? <a href="register.php">Sign up</a>
-	</p>
-</form>
-<p>admin login click here:</p>
-<button onclick="loginAdmin()">populate for admin</button>
-<p>user login click here:</p>
-<button onclick="loginUser()">populate for user</button>
 <?php include("templates/footer.php") ?>
-
-<?php
-$users = grabAllUsers();
-echo "<pre>" . print_r($users, true) . "</pre>";
-
-?>

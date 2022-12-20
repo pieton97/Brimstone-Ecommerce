@@ -17,10 +17,11 @@ $orders = grabAllOrders();
 	<div class="profile-banner">
 		<div class="profile-title">
 			<p>Admin Home</p>
+			<hr>
 		</div>
 		<div>
-			<?php include('templates/notifications.php'); ?>
 			<?php include('templates/profile_info.php'); ?>
+			<a href="../admin/create_user.php">Create user</a>
 		</div>
 	</div>
 

@@ -5,7 +5,6 @@
 		<img src="../images/user_profile.webp">
 	<?php endif; ?>
 
-
 	<div class="user-details">
 		<?php if (isset($_SESSION['user'])) : ?>
 			<p><?php echo $_SESSION['user']['username']; ?> <span style="color: #888;">(<?php echo ucfirst($_SESSION['user']['user_type']); ?>)</span></p>

@@ -13,80 +13,69 @@ if (isset($_GET['update'])) {
 	$query = "SELECT * FROM products WHERE id = ?";
 	$stmt = $pdo->prepare($query);
 	$stmt->execute([$update_id]);
-	$watch = $stmt->fetch(PDO::FETCH_ASSOC);
-	echo "<pre>" . print_r($watch, true) . "</pre>";
-	// foreach ($watch as $key => $val) {
-	// 	echo $key . " : " . $val . "<br>";
-	// }
-	$title        =  $watch['title'];
-	$img_name     =  $watch['img_name'];
-	$category     =  $watch['category'];
-	$subcategory    		=  $watch['subcategory'];
-	$description  =  $watch['description'];
-	$price        =  $watch['price'];
+	$product = $stmt->fetch(PDO::FETCH_ASSOC);
+	$title        =  $product['title'];
+	$img_name     =  $product['img_name'];
+	$category     =  $product['category'];
+	$subcategory  =  $product['subcategory'];
+	$description  =  $product['description'];
+	$price        =  $product['price'];
 }
 ?>
 
+
 <?php include("templates/header.php"); ?>
-<div class="header">
-	<h2>Edit product</h2>
+
+<div class="form-wrapper">
+	<div>
+		<h2>Edit product</h2>
+	</div>
+
+	<form class="product-form" method="post" action="edit_product_form.php">
+		<div>
+			<label for="title">Title</label>
+			<input type="text" id="title" name="title" value="<?php echo $title; ?>">
+		</div>
+		<div>
+			<label>Img Name</label>
+			<input type="text" name="img_name" value="<?php echo $img_name; ?>">
+		</div>
+		<div>
+			<label>Category</label>
+			<select name="category">
+				<option value="<?php echo $category; ?>"><?php echo $category; ?> (current)</option>
+				<option value="none">None</option>
+				<option value="cookies">Cookies</option>
+				<option value="cake">Cake</option>
+				<option value="ice-cream">Ice cream</option>
+				<option value="mochi">Mochi</option>
+				<!-- <option value="cookbooks">Cookbooks</option> -->
+			</select>
+		</div>
+		<div>
+			<label>Subcategory</label>
+			<select name="subcategory">
+				<option value="<?php echo $subcategory; ?>"><?php echo $subcategory; ?> (current)</option>
+				<option value="none">None</option>
+				<option value="gifts">Gifts</option>
+				<option value="featured">Featured</option>
+				<option value="others">Others</option>
+			</select>
+		</div>
+		<div>
+			<label>Description</label>
+			<textarea id="description" name="description"><?php echo htmlspecialchars($description); ?></textarea>
+		</div>
+		<div>
+			<label>Price</label>
+			<input type="text" name="price" value="<?php echo $price; ?>">
+		</div>
+		<div>
+			<button type="submit" name="edit_product_btn">Edit product</button>
+			<p><a href="admin_products.php">Cancel</a></p>
+		</div>
+		<input type="hidden" name="update_id" value="<?php echo $update_id; ?>">
+	</form>
 </div>
 
-<form method="post" action="edit_product_form.php">
-	<!-- notification message -->
-	<?php include('templates/notifications.php'); ?>
-
-	<div class="input-group">
-		<label for="title">Title</label>
-		<input type="text" id="title" name="title" value="<?php echo $title; ?>">
-	</div>
-	<div class="input-group">
-		<label>Img Name</label>
-		<input type="text" name="img_name" value="<?php echo $img_name; ?>">
-	</div>
-	<div class="input-group">
-		<label>Category</label>
-		<select name="category">
-			<option value="<?php echo $category; ?>"><?php echo $category; ?> (current)</option>
-			<option value="none">None</option>
-			<option value="cookies">Cookies</option>
-			<option value="cake">Cake</option>
-			<option value="ice-cream">Ice cream</option>
-			<option value="mochi">Mochi</option>
-			<!-- <option value="cookbooks">Cookbooks</option> -->
-		</select>
-	</div>
-	<div class="input-group">
-		<label>Subcategory</label>
-		<select name="subcategory">
-			<option value="<?php echo $subcategory; ?>"><?php echo $subcategory; ?> (current)</option>
-			<option value="none">None</option>
-			<option value="gifts">Gifts</option>
-			<option value="featured">Featured</option>
-			<option value="others">Others</option>
-		</select>
-	</div>
-	<div class="input-group">
-		<label>Description</label>
-		<textarea id="description" name="description"><?php echo htmlspecialchars($description); ?></textarea>
-	</div>
-	<div class="input-group">
-		<label>Price</label>
-		<input type="text" name="price" value="<?php echo $price; ?>">
-	</div>
-	<div class="input-group">
-		<button type="submit" class="btn" name="edit_product_btn">Edit product</button>
-	</div>
-	<input type="hidden" name="update_id" value="<?php echo $update_id; ?>">
-	<p>
-		<a href="admin_products.php">Cancel</a>
-	</p>
-</form>
-
 <?php include("templates/footer.php") ?>
-
-<?php
-$products = grabAllProducts();
-// echo "<pre>" . print_r($products, true) . "</pre>";
-
-?>

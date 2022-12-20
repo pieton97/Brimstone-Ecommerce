@@ -11,10 +11,9 @@ include('config/edit_product.php');
 
 $products = grabAllProducts();
 $count = count($products);
-$products = array_slice($products, 0, 5);
+$products = array_slice($products, 0, 6);
 $users = array_slice(grabAllUsers(), 0, 5);
 $orders = array_slice(grabAllOrders(), 0, 5);
-// $productss = json_decode($orders[0]['items_bought'], true);	//only have to decode 'items_bought'
 ?>
 
 
@@ -24,19 +23,19 @@ $orders = array_slice(grabAllOrders(), 0, 5);
 	<div class="profile-banner">
 		<div class="profile-title">
 			<p>Admin Home</p>
+			<hr>
 		</div>
 		<div>
-			<?php include('templates/notifications.php'); ?>
 			<?php include('templates/profile_info.php'); ?>
+			<a href="../admin/create_user.php">Create user</a>
 		</div>
 	</div>
 
 	<div class="profile-content">
 		<?php include("templates/admin-navbar.php"); ?>
-		<!-- <a href="../admin/create_user.php">Create user</a> -->
-
 		<!-- Editing products -->
 		<div class="admin-product-wrapper">
+			<p class="secret-note">note: please dont delete too many products so I dont have to constantly restore the db, thanks! :)</p>
 			<div class="admin-product-header">
 				<p>Current products: (<?php echo $count ?> count) <a href="add_product_form.php">Add product</a>, <a href="../admin/admin_products.php">View all</a></p>
 			</div>

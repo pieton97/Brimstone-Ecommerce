@@ -7,10 +7,8 @@ $products = grabAllProducts();
 
 <?php include("templates/header.php") ?>
 
-<!-- notification message -->
-<?php include('templates/notifications.php'); ?>
 <div class="home-wrapper">
-	<img src="../images/sssss.webp" alt="">
+	<img src="../images/home-hero.jpg" alt="">
 	<div class="description-wrapper">
 		<p class="title">SEND HOLIDAY MAGIC—STRAIGHT TO THEIR DOOR.</p>
 		<p>This holiday season, send bigger, bolder, and more chocolate-y gifts with our new limited edition Chocolate Mint Chip Cake and Cake Truffles, epic Peppermint Bark Tie Dye Pie, and classic Milk Bar Cookie Tins.</p>
