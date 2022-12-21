@@ -1,6 +1,6 @@
 <?php
 include('../config/essentials.php');
-include('config/edit_cart.php');
+include('../config/edit_cart.php');
 
 if (!isLoggedIn() || count($_SESSION["shopping_cart"]) == 0) {
 	$_SESSION['msg'] = "You must log in first";
@@ -13,7 +13,7 @@ $tax = formatPrice(0.0625 * $total_price);
 $finalTotal = formatPrice($total_price + $tax);
 ?>
 
-<?php include("templates/header.php") ?>
+<?php include("../templates/header.php") ?>
 
 <div class="checkout-wrapper">
 	<div class="cart-title">
@@ -89,4 +89,4 @@ $finalTotal = formatPrice($total_price + $tax);
 </div>
 
 
-<?php include("templates/footer.php") ?>
+<?php include("../templates/footer.php") ?>

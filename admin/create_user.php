@@ -1,9 +1,9 @@
 <?php
 include('../config/essentials.php');
-include('config/functions.php');
+include('../config/functions.php');
 ?>
 
-<?php include("templates/header.php"); ?>
+<?php include("../templates/header.php"); ?>
 
 <div class="form-wrapper">
 
@@ -45,4 +45,4 @@ include('config/functions.php');
 	</form>
 </div>
 
-<?php include("templates/footer.php") ?>
+<?php include("../templates/footer.php") ?>

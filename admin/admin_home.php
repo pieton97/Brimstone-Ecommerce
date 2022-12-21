@@ -5,9 +5,9 @@ if (isAdmin() === false) {
 	header('location: ../pages/login.php');
 };
 
-include('config/functions.php');
-include('config/edit_cart.php');
-include('config/edit_product.php');
+include('../config/functions.php');
+include('../config/edit_cart.php');
+include('../config/edit_product.php');
 
 $products = grabAllProducts();
 $count = count($products);
@@ -17,7 +17,7 @@ $orders = array_slice(grabAllOrders(), 0, 5);
 ?>
 
 
-<?php include("templates/header.php"); ?>
+<?php include("../templates/header.php"); ?>
 
 <div class="profile-main-wrapper">
 	<div class="profile-banner">
@@ -26,13 +26,13 @@ $orders = array_slice(grabAllOrders(), 0, 5);
 			<hr>
 		</div>
 		<div>
-			<?php include('templates/profile_info.php'); ?>
+			<?php include('../templates/profile_info.php'); ?>
 			<a href="../admin/create_user.php">Create user</a>
 		</div>
 	</div>
 
 	<div class="profile-content">
-		<?php include("templates/admin-navbar.php"); ?>
+		<?php include("../templates/admin-navbar.php"); ?>
 		<!-- Editing products -->
 		<div class="admin-product-wrapper">
 			<p class="secret-note">note: please dont delete too many products so I dont have to constantly restore the db, thanks! :)</p>
@@ -92,4 +92,4 @@ $orders = array_slice(grabAllOrders(), 0, 5);
 	</div>
 </div>
 
-<?php include("templates/footer.php") ?>
+<?php include("../templates/footer.php") ?>

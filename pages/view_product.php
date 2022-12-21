@@ -1,6 +1,6 @@
 <?php
 include('../config/essentials.php');
-include('config/edit_cart.php');
+include('../config/edit_cart.php');
 
 if (isset($_GET['product'])) {
 	$product_id = $_GET['product'];
@@ -8,7 +8,7 @@ if (isset($_GET['product'])) {
 }
 ?>
 
-<?php include("templates/header.php") ?>
+<?php include("../templates/header.php") ?>
 <div class="single-product-wrapper">
 	<img class="" src="../product_images/<?php echo $product['img_name'] ?>" alt="">
 	<div class="product-content">
@@ -27,4 +27,4 @@ if (isset($_GET['product'])) {
 	</div>
 </div>
 
-<?php include("templates/footer.php") ?>
+<?php include("../templates/footer.php") ?>

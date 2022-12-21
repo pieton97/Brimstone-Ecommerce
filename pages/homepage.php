@@ -1,11 +1,11 @@
 <?php
 include('../config/essentials.php');
-include('config/edit_cart.php');
+include('../config/edit_cart.php');
 
 $products = grabAllProducts();
 ?>
 
-<?php include("templates/header.php") ?>
+<?php include("../templates/header.php") ?>
 
 <div class="home-wrapper">
 	<img src="../images/home-hero.jpg" alt="">
@@ -117,4 +117,4 @@ $products = grabAllProducts();
 	</div>
 </div>
 
-<?php include("templates/footer.php") ?>
+<?php include("../templates/footer.php") ?>

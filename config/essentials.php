@@ -4,9 +4,7 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 require('db_connect.php');
 
-// echo getcwd() . "<br>";
-chdir('C://xampp/htdocs/brimstone');
-// echo getcwd() . "<br>";
+// chdir('C://xampp/htdocs/brimstone');
 
 function debug_to_console($data)
 {

@@ -1,6 +1,6 @@
 <?php
 include('../config/essentials.php');
-include('config/edit_cart.php');
+include('../config/edit_cart.php');
 
 if (isset($_GET['view_all'])) {
 	$from = $_GET['view_all'];
@@ -17,7 +17,7 @@ if (isset($_GET['subcategory'])) {
 $count = count($products);
 ?>
 
-<?php include("templates/header.php") ?>
+<?php include("../templates/header.php") ?>
 
 <div class="products-container">
 	<?php foreach ($products as $item) { ?>
@@ -43,4 +43,4 @@ $count = count($products);
 	<?php } ?>
 </div>
 
-<?php include("templates/footer.php") ?>
+<?php include("../templates/footer.php") ?>

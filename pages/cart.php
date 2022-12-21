@@ -1,6 +1,6 @@
 <?php
 include('../config/essentials.php');
-include('config/edit_cart.php');
+include('../config/edit_cart.php');
 
 if (isLoggedIn()) {
 	$_SESSION['shopping_cart'] = grabUserCart();
@@ -14,7 +14,7 @@ $total_price = calcTotalPrice($_SESSION['shopping_cart']);
 ?>
 
 
-<?php include("templates/header.php") ?>
+<?php include("../templates/header.php") ?>
 
 <?php
 if ($cartRows > 0) :
@@ -77,4 +77,4 @@ if ($cartRows > 0) :
 	</div>
 <?php endif; ?>
 
-<?php include("templates/footer.php") ?>
+<?php include("../templates/footer.php") ?>

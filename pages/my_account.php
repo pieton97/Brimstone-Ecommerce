@@ -1,7 +1,7 @@
 <?php
 include('../config/essentials.php');
-include('config/functions.php');
-include('config/edit_cart.php');
+include('../config/functions.php');
+include('../config/edit_cart.php');
 
 if (!isLoggedIn()) {
 	$_SESSION['msg'] = "You must log in first";
@@ -11,7 +11,7 @@ $orders = grabAllOrdersByID($user_id);
 
 ?>
 
-<?php include("templates/header.php") ?>
+<?php include("../templates/header.php") ?>
 
 <div class="profile-main-wrapper">
 	<div class="profile-banner">
@@ -20,7 +20,7 @@ $orders = grabAllOrdersByID($user_id);
 			<hr>
 		</div>
 		<div class="content">
-			<?php include('templates/profile_info.php'); ?>
+			<?php include('../templates/profile_info.php'); ?>
 		</div>
 	</div>
 
@@ -45,4 +45,4 @@ $orders = grabAllOrdersByID($user_id);
 </div>
 
 
-<?php include("templates/footer.php") ?>
+<?php include("../templates/footer.php") ?>

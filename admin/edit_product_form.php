@@ -1,6 +1,6 @@
 <?php
 include('../config/essentials.php');
-include('config/edit_product.php');
+include('../config/edit_product.php');
 
 if (isAdmin() === false) {
 	$_SESSION['msg'] = "You must log in first";
@@ -24,7 +24,7 @@ if (isset($_GET['update'])) {
 ?>
 
 
-<?php include("templates/header.php"); ?>
+<?php include("../templates/header.php"); ?>
 
 <div class="form-wrapper">
 	<div>
@@ -78,4 +78,4 @@ if (isset($_GET['update'])) {
 	</form>
 </div>
 
-<?php include("templates/footer.php") ?>
+<?php include("../templates/footer.php") ?>

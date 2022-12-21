@@ -163,8 +163,6 @@ if (isset($_POST['checkout_cart'])) {
 
 	deleteAllFromCart();
 	header('location: ../pages/my_account.php');
-
-	// echo "<pre>" . print_r($curPurchase, true) . "</pre>";
 };
 
 function calcTotalPrice($cartArray)

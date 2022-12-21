@@ -4,14 +4,14 @@ if (isAdmin() === false) {
 	$_SESSION['msg'] = "You must log in first";
 	header('location: ../pages/login.php');
 };
-include('config/functions.php');
-include('config/edit_cart.php');
+include('../config/functions.php');
+include('../config/edit_cart.php');
 
 $orders = grabAllOrders();
 
 ?>
 
-<?php include("templates/header.php"); ?>
+<?php include("../templates/header.php"); ?>
 
 <div class="profile-main-wrapper">
 	<div class="profile-banner">
@@ -20,13 +20,13 @@ $orders = grabAllOrders();
 			<hr>
 		</div>
 		<div>
-			<?php include('templates/profile_info.php'); ?>
+			<?php include('../templates/profile_info.php'); ?>
 			<a href="../admin/create_user.php">Create user</a>
 		</div>
 	</div>
 
 	<div class="profile-content">
-		<?php include("templates/admin-navbar.php"); ?>
+		<?php include("../templates/admin-navbar.php"); ?>
 
 		<!-- Displaying placed orders -->
 		<div class="admin-user-details">
@@ -44,4 +44,4 @@ $orders = grabAllOrders();
 	</div>
 </div>
 
-<?php include("templates/footer.php") ?>
+<?php include("../templates/footer.php") ?>
