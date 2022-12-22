@@ -13,7 +13,6 @@
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	/* background-color: var(--soft-accent); */
 }
 .product img {
 	width: 100%;

@@ -23,7 +23,7 @@
 
 <body>
 	<div class="heading-container">
-		<p class="sale-banner">ENJOY FREE STANDARD SHIPPING WHEN YOU ORDER NOW DURING THIS HOLIDAY!</p>
+		<p class="sale-banner">FREE SHIPPING FOR ORDERS PLACED WITHIN THE U.S. ALWAYS FREE RETURNS</p>
 
 		<nav>
 			<div class="nav-logo-container">

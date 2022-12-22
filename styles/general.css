@@ -14,14 +14,11 @@
 :root {
   --main-color: #ecece8;
   --second-color: #121212;
-  /* --accent-color: #00b7fc; */
-  --accent-color: #d1e0c4;
-
-  --soft-accent: #d1e0c4;
-  --darker-accent: #a89075;
   --action: #9f6252;
-  --action23: #e94c8c;
-  --action2: #e94c8c;
+  --accent-color: #a89075;		/* for footer background */
+  --darker-accent: #a89075;	/* for homepage page break */
+
+  /* --action2: #e94c8c; */
 }
 
 /* general css start */
