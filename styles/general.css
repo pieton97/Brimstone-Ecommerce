@@ -41,15 +41,6 @@ ul li {
   list-style: none;
 }
 
-.sale-banner {
-  background-color: var(--second-color);
-  color: var(--main-color);
-  width: 100%;
-  text-align: center;
-  height: 50px;
-  line-height: 50px;
-}
-
 a {
   color: inherit;
   text-decoration: none;

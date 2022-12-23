@@ -23,6 +23,15 @@ nav ul {
   gap: 30px;
 }
 
+.sale-banner {
+  background-color: var(--second-color);
+  color: var(--main-color);
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+}
+
 .nav-logo-container {
   width: 210px;
   display: flex;
