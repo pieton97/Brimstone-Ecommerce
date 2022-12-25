@@ -92,7 +92,7 @@
   text-align: center;
   padding: 12px 0;
   width: 350px;
-  margin: 10px 0;
+  margin: 20px 0;
   border: none;
   border-radius: 5px;
   font-size: 1rem;
@@ -111,9 +111,8 @@
   color: var(--second-color);
   font-size: 1rem;
   width: 100%;
-  /* min-height: 300px; */
   margin: 20px 0;
-  padding: 120px 0;
+  padding: 100px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
