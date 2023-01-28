@@ -16,7 +16,7 @@ $products = grabAllProducts();
 	</div>
 </div>
 
-<hr>
+<!-- <hr> -->
 
 <div class="categories-wrapper">
 	<p class="title">IN THE SPOTLIGHT</p>
@@ -94,7 +94,7 @@ $products = grabAllProducts();
 	</div>
 </div>
 
-<hr>
+<!-- <hr> -->
 
 <div class="business-info">
 	<div>

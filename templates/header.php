@@ -10,25 +10,26 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" type="text/css" href="../styles/general.css?php echo time(); ?>">
-	<link rel="stylesheet" type="text/css" href="../styles/navbar.css?php echo time(); ?>">
-	<link rel="stylesheet" type="text/css" href="../styles/homepage.css?v=<?php echo time(); ?>">
-	<link rel="stylesheet" type="text/css" href="../styles/footer.css?v=<?php echo time(); ?>">
-	<link rel="stylesheet" type="text/css" href="../styles/products.css?v=<?php echo time(); ?>">
-	<link rel="stylesheet" type="text/css" href="../styles/users.css?v=<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="../styles/navbar.css?<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="../styles/homepage.css?<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="../styles/footer.css?<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="../styles/products.css?<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="../styles/users.css?<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="../styles/general.css?<?php echo time(); ?>">
 
 	<script src="../scripts/test.js" defer></script>
 	<script src="../scripts/populateData.js" defer></script>
 </head>
 
 <body>
+	<p class="sale-banner">FREE SHIPPING FOR ORDERS PLACED WITHIN THE U.S. ALWAYS FREE RETURNS</p>
 	<div class="heading-container">
-		<p class="sale-banner">FREE SHIPPING FOR ORDERS PLACED WITHIN THE U.S. ALWAYS FREE RETURNS</p>
-
 		<nav>
 			<div class="nav-logo-container">
 				<a href="../pages/homepage.php"><img src="../images/cookie-logo.png" alt=""></a>
-				<a href="../pages/homepage.php"><p>Milk Treats</p></a>
+				<a href="../pages/homepage.php">
+					<p>Milk Treats</p>
+				</a>
 			</div>
 			<ul>
 				<li><a href="../pages/view_category.php?category=cookies">Cookies</a></li>

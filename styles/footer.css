@@ -25,6 +25,10 @@ footer .info {
 	font-size: 1rem;
 	margin-right: 8px;
 }
+footer .info::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: var(--second-color);
+  opacity: 1; /* Firefox */
+}
 footer .mail-btn {
 	padding: 10px 30px;
 	border: none;
@@ -33,7 +37,7 @@ footer .mail-btn {
 	background-color: var(--action);
 	color: var(--main-color);
 	cursor: pointer;
-	transition: all 0.3s;
+	transition: all 0.2s;
 }
 footer .mail-btn:hover {
 	box-shadow: 0 3px 10px 3px rgba(0, 0, 0, 0.337);

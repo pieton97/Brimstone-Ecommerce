@@ -36,7 +36,7 @@
   background-color: var(--action);
   color: var(--main-color);
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 .description-wrapper .action-btn:hover {
   box-shadow: 0 3px 10px 3px rgba(0, 0, 0, 0.337);
@@ -64,16 +64,16 @@
 }
 .category-item {
   width: 100%;
-  min-width: 300px;
+  min-width: 200px;
   max-width: 450px;
-  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.197);
+  box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.197);
   border-radius: 30px;
   overflow: hidden;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 .category-item:hover {
-  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.197);
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.197);
 }
 .category-item img {
   width: 100%;
@@ -210,7 +210,7 @@ div.benefits-page-break > p:first-child {
   justify-content: center;
   gap: 14px;
   padding: 25px 60px;
-	margin: 50px 0;
+  margin: 50px 0;
 }
 .business-info .title {
   font-size: 1.5rem;
